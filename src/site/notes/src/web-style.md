@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/web-style/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/web-style/"}
 ---
 
 Code style for Sugar HTML development
@@ -26,11 +26,11 @@ The js-beautify tool can be handy for indenting HTML as well.
 
 * Use two spaces for indentation.
 
-* Make it compliant with RECESS. [See explanation below](#recess).
+* Make it compliant with RECESS. [[src/web-style#recess\|See explanation below]].
 
 ### JavaScript
 
-* The JavaScript style guide is [here](./javascript-style.md)
+* The JavaScript style guide is [[./javascript-style.md.md\|here]]
 
 Tools
 -----

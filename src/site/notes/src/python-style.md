@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/python-style/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/python-style/"}
 ---
 
 Code style for Sugar Python development

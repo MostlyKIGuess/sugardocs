@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/python-porting-guide/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/python-porting-guide/"}
 ---
 
 # Python 3 Porting Guide
@@ -16,7 +16,7 @@ Many activities were written in Python 2 with the PyGObject introspection librar
 
 ## How to Port an Activity to Python 3:
 
-* Quiesce the activity source by making sure the activity works properly before porting, closing any solved issues, merging any pull requests or branches and releasing the last Python 2 version; see the [activity maintainer checklist](contributing.md#checklist---maintainer).
+* Quiesce the activity source by making sure the activity works properly before porting, closing any solved issues, merging any pull requests or branches and releasing the last Python 2 version; see the [[contributing.md.md#checklist---maintainer\|contributing.md.md#checklist---maintainer]].
 
 * Check that a Python 3 port has not already been done; look for a _python3_ branch in the main repository, or any developer fork.
 
@@ -27,7 +27,7 @@ Many activities were written in Python 2 with the PyGObject introspection librar
   python3 -c 'import sugar3'
   ```
 
-* Prepare a test plan to cover each feature and user interface widget, and consider [assessing coverage](python-coverage-guide.md),
+* Prepare a test plan to cover each feature and user interface widget, and consider [[python-coverage-guide.md.md\|assessing coverage]],
 
 * If the activity uses `telepathy-python`, test and fix collaboration, then port to PyGObject binding `TelepathyGLib`, and test again, for example;
   ```python
@@ -118,7 +118,7 @@ Once an activity is ported, a new release can be made. The major version
 should be greater than the existing one.
 
 Please follow
-[this](contributing.md#checklist---maintainer)
+[[contributing.md.md#checklist---maintainer\|contributing.md.md#checklist---maintainer]]
 guide for releasing a new version.
 
 Avoid releasing Python 3 activities to https://activities.sugarlabs.org/ as these will not work on existing systems.

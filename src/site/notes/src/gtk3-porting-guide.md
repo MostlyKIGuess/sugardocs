@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/gtk3-porting-guide/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/gtk3-porting-guide/"}
 ---
 
 # GTK 3 Porting Guide
@@ -62,7 +62,7 @@ General information for all GTK applications;
 
 * Set up test environments capable of both GTK 2 and GTK 3 at the same time; such as Ubuntu 16.04,
 
-* Quiesce the activity source by making sure the activity works properly before porting, fixing any bugs, closing any solved issues, merging any pull requests or branches and releasing the last GTK 2 version; see the activity [maintainer checklist](contributing.md#checklist---maintainer).
+* Quiesce the activity source by making sure the activity works properly before porting, fixing any bugs, closing any solved issues, merging any pull requests or branches and releasing the last GTK 2 version; see the activity [[contributing.md.md#checklist---maintainer\|contributing.md.md#checklist---maintainer]].
 
 * Port to Sugar Toolkit for GTK 3 (see below),
 
@@ -752,16 +752,16 @@ Once an activity is ported, a new release can be made. The major version
 should be greater than the existing one.
 
 Please follow
-[this](contributing.md#checklist---maintainer)
+[[contributing.md.md#checklist---maintainer\|contributing.md.md#checklist---maintainer]]
 guide for releasing a new version
 
 ## Notes
 
 These are the changes noted by developers while porting activities
 
--   `Gtk.Widget.hide_all()` does not exist anymore. We should use just `.hide` [Ref](http://developer.gnome.org/gtk3/3.5/GtkWidget.html#gtk-widget-hide)
+-   `Gtk.Widget.hide_all()` does not exist anymore. We should use just `.hide` [[http://developer.gnome.org/gtk3/3.5/GtkWidget.html#gtk-widget-hide\|http://developer.gnome.org/gtk3/3.5/GtkWidget.html#gtk-widget-hide]]
 -   If the code creates some own object, and it defines some properties,
-    you should use `__gproperties__` dictionary. [Ref](http://python-gtk-3-tutorial.readthedocs.org/en/latest/objects.html#GObject.GObject.__gproperties__)
+    you should use `__gproperties__` dictionary. [[http://python-gtk-3-tutorial.readthedocs.org/en/latest/objects.html#GObject.GObject.__gproperties__\|http://python-gtk-3-tutorial.readthedocs.org/en/latest/objects.html#GObject.GObject.__gproperties__]]
 -   `Gtk.ListStore` doesn't have the method `.reorder`. There is a
     [ticket](https://bugzilla.gnome.org/show_bug.cgi?id=677941) reported
     upstream about this.
@@ -820,7 +820,7 @@ These are the changes noted by developers while porting activities
 
 ## Porting examples
 
--   [Biorhythm (GTK 3 and PangoCairo)](https://github.com/sugarlabs/biorhythm/commit/c16de3b70cce2cc6f8af933e2b062c844a47c144/)
--   [Peru Learns English (GTK 3 and GStreamer 1.0)](https://github.com/sugarlabs/peru-learns-english-activity/commit/caa2cde526b3823a5a1f7d200a76ad5bc3502b0e)
--   [Jump (GTK 3 and Sugargame)](https://github.com/sugarlabs/jump/commit/b75410d2879d9829df942726f5465b7cf5a9d98d)
--   [I know Madagascar (GTK 3 and Sugargame)](https://github.com/sugarlabs/iknowMadagascar/commit/5de78baca2daebe483bcc35912d254c77f2416f4)
+-   [[GTK 3 and PangoCairo)](GTK 3 and PangoCairo\|Biorhythm (GTK 3 and PangoCairo)]])
+-   [[GTK 3 and GStreamer 1.0)](GTK 3 and GStreamer 1.0\|Peru Learns English (GTK 3 and GStreamer 1.0)]])
+-   [[GTK 3 and Sugargame)](GTK 3 and Sugargame\|Jump (GTK 3 and Sugargame)]])
+-   [[GTK 3 and Sugargame)](GTK 3 and Sugargame\|I know Madagascar (GTK 3 and Sugargame)]])

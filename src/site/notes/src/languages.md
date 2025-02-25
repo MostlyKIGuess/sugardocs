@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/languages/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/languages/"}
 ---
 
 # Sugar Labs Programming Languages

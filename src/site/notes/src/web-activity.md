@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/web-activity/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/web-activity/"}
 ---
 
 Write your own Sugar web activity
@@ -44,11 +44,11 @@ repository](https://github.com/llaske/Sugarizer), copy all content of
 Choose a name for your activity.  Write it in the activity name and
 bundle-id in `activity/activity.info` of the new directory.
 
-![activity.info](images/activity-info.png "activity.info")
+![[images/activity-info.png "activity.info"\|activity.info]]
 
 And also in the title tag of `index.html`.
 
-![index.html](images/activity-html.png "index.html")
+![[images/activity-html.png "index.html"\|index.html]]
 
 On *packaged sugar*, install the activity for development
 
@@ -56,12 +56,12 @@ On *packaged sugar*, install the activity for development
 
 On *Sugarizer*, update the file `activities.json` of the Sugarizer directory: add a new line for your activity. Update id, name and directory values on this new line.
 
-![Sugarizer settings](images/sugarizer-json.png "Sugarizer settings")
+![[images/sugarizer-json.png "Sugarizer settings"\|Sugarizer settings]]
 
 
 Now you should have a basic activity running!
 
-![Activity template](images/activity-template.png "Activity template")
+![[images/activity-template.png "Activity template"\|Activity template]]
 
 ### File structure
 
@@ -95,7 +95,7 @@ In your new activity, you will find the following file structure:
 Those are the files you'll modify in most cases. The others are:
 
 * `js/loader.js` configures the libraries paths and loads your
-  `js/activity.js` . You can add [non-AMD libraries](#non-amd%20libs) here.
+  `js/activity.js` . You can add [[src/web-activity#non-amd libs\|non-AMD libraries]] here.
 
 * `lib/` contains the libraries
 
@@ -231,7 +231,7 @@ The inspector is a very useful tool for many things. For example, you
 can edit the activity CSS or HTML, and interactively see how it is
 affected. Or you can execute JavaScript commands in the console.
 
-![Activity inspector](images/activity-inspector.png "Activity inspector")
+![[images/activity-inspector.png "Activity inspector"\|Activity inspector]]
 
 It has also more advanced tools for JavaScript debugging. They are
 nicely documented here:
@@ -268,7 +268,7 @@ Then in `js/activity.js` you can use it:
 #### non-AMD libs
 
 Please, refer to
-RequiresJS [shim section](http://requirejs.org/docs/api.html#config-shim),
+RequiresJS [[http://requirejs.org/docs/api.html#config-shim\|http://requirejs.org/docs/api.html#config-shim]],
 then you can add your shim section in `js/loader.js`
 
 ### Ready to release

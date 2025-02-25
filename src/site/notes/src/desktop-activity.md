@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/desktop-activity/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/desktop-activity/"}
 ---
 
 Write your own Sugar desktop activity
@@ -103,7 +103,7 @@ graphic design.
 
 Here is `activity/activity-helloworld.svg`;
 
-![Activity Icon](images/activity-helloworld.svg "Activity icon")
+![[images/activity-helloworld.svg "Activity icon"\|Activity Icon]]
 
 You should rename this file and change `icon` in the `activity.info`
 file.
@@ -206,7 +206,7 @@ activity.
 
 ### Check Python Coverage of your activity
 
-You can check the Python Coverage of your activity by following [this](python-coverage-guide.md) guide.
+You can check the Python Coverage of your activity by following [[python-coverage-guide.md.md\|this]] guide.
 
 ### Ready to release
 

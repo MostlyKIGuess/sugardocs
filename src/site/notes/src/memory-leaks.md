@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/memory-leaks/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/memory-leaks/"}
 ---
 
 # Finding Memory Leaks
@@ -64,7 +64,7 @@ plot "memory.log" using 1:2 title "run #1" lw 2
 
 The `memory.png` might look like this:
 
-![Example of memory leak graph](/img/user/src/images/memory-leak-example.png)
+![images/memory-leak-example.png|Example of memory leak graph](/img/user/src/images/memory-leak-example.png)
 
 Finally removes the files,
 

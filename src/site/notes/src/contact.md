@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/contact/","noteIcon":""}
+{"dg-publish":true,"permalink":"/src/contact/"}
 ---
 
 Contact
