@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/python-coverage-guide/"}
+{"dg-publish":true,"permalink":"/src/python-coverage-guide/","noteIcon":""}
 ---
 
 Measuring coverage of Python activities

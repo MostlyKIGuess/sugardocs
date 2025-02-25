@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/sugar-iconify/"}
+{"dg-publish":true,"permalink":"/src/sugar-iconify/","noteIcon":""}
 ---
 
 # Sugar Iconify

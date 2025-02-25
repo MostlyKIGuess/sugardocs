@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/python-porting-guide/"}
+{"dg-publish":true,"permalink":"/src/python-porting-guide/","noteIcon":""}
 ---
 
 # Python 3 Porting Guide

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/code-of-conduct/"}
+{"dg-publish":true,"permalink":"/src/code-of-conduct/","noteIcon":""}
 ---
 
 Code of Conduct

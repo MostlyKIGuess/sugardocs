@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/contributing/"}
+{"dg-publish":true,"permalink":"/src/contributing/","noteIcon":""}
 ---
 
 Contributing

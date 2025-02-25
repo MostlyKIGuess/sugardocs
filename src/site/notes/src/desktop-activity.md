@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/desktop-activity/"}
+{"dg-publish":true,"permalink":"/src/desktop-activity/","noteIcon":""}
 ---
 
 Write your own Sugar desktop activity

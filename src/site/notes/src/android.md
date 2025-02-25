@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/android/"}
+{"dg-publish":true,"permalink":"/src/android/","noteIcon":""}
 ---
 
 Sugar on Android

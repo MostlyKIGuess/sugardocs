@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/web-style/"}
+{"dg-publish":true,"permalink":"/src/web-style/","noteIcon":""}
 ---
 
 Code style for Sugar HTML development

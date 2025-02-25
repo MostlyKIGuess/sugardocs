@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/how-can-i-help/"}
+{"dg-publish":true,"permalink":"/src/how-can-i-help/","noteIcon":""}
 ---
 
 # How Can I Help?

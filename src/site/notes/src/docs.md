@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/docs/"}
+{"dg-publish":true,"permalink":"/src/docs/","noteIcon":""}
 ---
 
 Improving this documentation

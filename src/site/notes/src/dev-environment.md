@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/dev-environment/"}
+{"dg-publish":true,"permalink":"/src/dev-environment/","noteIcon":""}
 ---
 
 Setup a development environment

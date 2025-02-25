@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/web-architecture/"}
+{"dg-publish":true,"permalink":"/src/web-architecture/","noteIcon":""}
 ---
 
 Sugar web architecture

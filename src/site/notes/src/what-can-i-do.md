@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/what-can-i-do/"}
+{"dg-publish":true,"permalink":"/src/what-can-i-do/","noteIcon":""}
 ---
 
 # Page Moved

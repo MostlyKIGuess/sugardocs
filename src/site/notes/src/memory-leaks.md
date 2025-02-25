@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/memory-leaks/"}
+{"dg-publish":true,"permalink":"/src/memory-leaks/","noteIcon":""}
 ---
 
 # Finding Memory Leaks

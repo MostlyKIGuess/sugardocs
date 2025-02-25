@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/sugar-logging-in/"}
+{"dg-publish":true,"permalink":"/src/sugar-logging-in/","noteIcon":""}
 ---
 
 # Guide to logging in with the Sugar desktop

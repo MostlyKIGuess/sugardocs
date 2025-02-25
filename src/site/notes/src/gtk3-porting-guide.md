@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/gtk3-porting-guide/"}
+{"dg-publish":true,"permalink":"/src/gtk3-porting-guide/","noteIcon":""}
 ---
 
 # GTK 3 Porting Guide

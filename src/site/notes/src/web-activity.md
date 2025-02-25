@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/web-activity/"}
+{"dg-publish":true,"permalink":"/src/web-activity/","noteIcon":""}
 ---
 
 Write your own Sugar web activity

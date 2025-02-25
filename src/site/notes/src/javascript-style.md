@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/javascript-style/"}
+{"dg-publish":true,"permalink":"/src/javascript-style/","noteIcon":""}
 ---
 
 Code style for Sugar JavaScript development

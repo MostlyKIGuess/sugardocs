@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/src/hig/"}
+{"dg-publish":true,"permalink":"/src/hig/","noteIcon":""}
 ---
 
 Human Interface Guidelines
