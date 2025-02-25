@@ -9,7 +9,7 @@ Welcome to documentation for contributors and developers.
 
 ## Getting started
 
-* [Code of Conduct](src/CODE_OF_CONDUCT)
+* [Code of Conduct](src/code-of-conduct)
 * [How can I help?](src/how-can-i-help)
 * [Contribute code](src/contributing)
 * [Programming Languages](src/languages)
@@ -17,7 +17,7 @@ Welcome to documentation for contributors and developers.
 
 ## Design
 
-* [Human Interface Guidelines](src/HIG)
+* [Human Interface Guidelines](src/hig)
 * [Sugar Iconify](src/sugar-iconify)
 
 ## Sugar Desktop
