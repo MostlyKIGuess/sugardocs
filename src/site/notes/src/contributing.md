@@ -327,7 +327,7 @@ Goals for review are to;
 
 ### Checklist
 
-* [ ] does the change have consensus of the community, see also [code of conduct](src/CODE_OF_CONDUCT) (if a reviewer is in doubt, seek opinions by @mentioning people),
+* [ ] does the change have consensus of the community, see also [code of conduct](src/code-of-conduct) (if a reviewer is in doubt, seek opinions by @mentioning people),
 
 * [ ] does the commit message explain the summary, problem, and solution, so that it can be used in future analysis, see also [making commits](#making-commits) (if a reviewer can fix it by squash or manual rebase, do so),
 

@@ -35,6 +35,14 @@ def fix_links(content, filename):
     # Remove .md extension from links
     content = re.sub(r'\[([^\]]+)\]\((src/[^)]+)\.md\)', r'[\1](\2)', content)
     
+    def lowercase_and_hyphenate(match):
+        link_text = match.group(1)
+        link_path = match.group(2)
+        modified_path = link_path.lower().replace('_', '-')
+        return f'[{link_text}](src/{modified_path})'
+    
+    content = re.sub(r'\[([^\]]+)\]\(src/([^)]+)\)', lowercase_and_hyphenate, content)
+    
     return content
 
 def process_file(src_path, dest_path):
@@ -75,7 +83,8 @@ def sync_files():
         if src_file.name in EXCLUDED_FILES:
             continue
         
-        dest_filename = src_file.name.lower().replace(' ', '-')
+        # Convert both spaces AND underscores to hyphens for web-friendly URLs
+        dest_filename = src_file.name.lower().replace(' ', '-').replace('_', '-')
         dest_path = Path(TARGET_DIR) / dest_filename
         
         process_file(src_file, dest_path)
