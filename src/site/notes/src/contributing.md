@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/contributing/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/contributing/
 ---
 
 Contributing
@@ -37,8 +39,8 @@ wiki.sugarlabs.org](https://wiki.sugarlabs.org/go/Activity), or our
 deprecated [gitorious instance](https://git.sugarlabs.org/).
 
 For new activities, see [Write your own Sugar desktop
-activity](desktop-activity.md), or [Write your own Sugar web
-activity](web-activity.md), then make a new repository in your
+activity](src/desktop-activity), or [Write your own Sugar web
+activity](src/web-activity), then make a new repository in your
 GitHub account, put the source code in it, then ask the [systems@
 list](https://lists.sugarlabs.org/listinfo/systems) to move it to the
 GitHub `sugarlabs` organization.
@@ -53,13 +55,13 @@ After modifying an activity, a new release may be needed.  Some activities have 
 
 * [ ] check if what you want to change is available already in any other branches or forks,
 
-* [[src/contributing#testing\| ]] your changes,
+* [ ] make and [test](#testing) your changes,
 
 * [ ] if your changes add a new feature or will affect users; update the NEWS file, the README.md file, and the help-activity,
 
 * [ ] if there is a `po/*.pot` file, and your changes affect translated strings; regenerate using `python setup.py genpot`,
 
-* [[src/contributing#workflow\| ]] below.
+* [ ] make a branch, one or more commits, and a pull request, see [Workflow](#workflow) below.
 
 ### Checklist - maintainer
 
@@ -88,7 +90,7 @@ After modifying an activity, a new release may be needed.  Some activities have 
 
 * [ ] if there is a `po/*.pot` file, regenerate using `python setup.py genpot`, review the changes, and commit,
 
-* [[weblate.sugarlabs.org\| ]], be sure to merged any open PRs raised
+* [ ] If the activity is on [weblate](weblate.sugarlabs.org), be sure to merged any open PRs raised
 from the [weblate-sync](https://wiki.sugarlabs.org/go/Service/Weblate) workflow. 
 
 * [ ] update the README.md file if necessary,
@@ -177,7 +179,7 @@ Change files, and commit.  Commit messages are kept by git, and are used later w
 5. when the problem is in an issue or ticket, add "Fixes #1234";
 6. avoid mentioning GitHub or other pull-requests, as these are not kept in git;
 7. avoid mentioning any contest tasks or mentors; use pull-request comments instead; and
-8. use imperative mood, like "add foo", or "port to bar"; (if English is not your first language, see [imperative mood](https://en.wikipedia.org/wiki/Imperative_mood), [[https://git.kernel.org/pub/scm/git/git.git/tree/Documentation/SubmittingPatches#n133\|https://git.kernel.org/pub/scm/git/git.git/tree/Documentation/SubmittingPatches#n133]] and [blog post by Dan Clarke](https://www.danclarke.com/git-tense)).
+8. use imperative mood, like "add foo", or "port to bar"; (if English is not your first language, see [imperative mood](https://en.wikipedia.org/wiki/Imperative_mood), [git documentation](https://git.kernel.org/pub/scm/git/git.git/tree/Documentation/SubmittingPatches#n133) and [blog post by Dan Clarke](https://www.danclarke.com/git-tense)).
 
 Make one or more commits and push the branch to your repository;
 
@@ -247,7 +249,7 @@ git checkout BRANCH-NAME
 
 ### Review
 
-We encourage [[src/contributing#testing\|testing]] before merging a pull-request.
+We encourage [testing](#testing) before merging a pull-request.
 
 So instead of merging directly with the "merge" button on GitHub, we may do a local merge, then test, then push.
 
@@ -262,7 +264,7 @@ git checkout -b SOME-USER-topic1 master
 git pull https://github.com/SOME-USER/sugar.git topic1
 ```
 
-[[src/contributing#testing\|Test]]! If everything is fine, merge:
+[Test](#testing)! If everything is fine, merge:
 
 ```
 git checkout master
@@ -315,7 +317,7 @@ Goals for review are to;
 
 * maintain consistent and good code quality,
 
-* reproduce [[src/contributing#testing\|test]] results, (especially for critical repositories),
+* reproduce [test](#testing) results, (especially for critical repositories),
 
 * maintain a useful git commit history for use by git bisect, and developers who read it,
 
@@ -325,15 +327,15 @@ Goals for review are to;
 
 ### Checklist
 
-* [[CODE_OF_CONDUCT.md.md\| ]] (if a reviewer is in doubt, seek opinions by @mentioning people),
+* [ ] does the change have consensus of the community, see also [code of conduct](src/CODE_OF_CONDUCT) (if a reviewer is in doubt, seek opinions by @mentioning people),
 
-* [[src/contributing#making-commits\| ]] (if a reviewer can fix it by squash or manual rebase, do so),
+* [ ] does the commit message explain the summary, problem, and solution, so that it can be used in future analysis, see also [making commits](#making-commits) (if a reviewer can fix it by squash or manual rebase, do so),
 
 * [ ] does the commit message reference any issue, bugs.sugarlabs.org ticket number, or downstream ticket numbers, (if a reviewer can fix it by squash or manual rebase, do so),
 
 * [ ] are the number of commits excessive for future analysis, (a reviewer may squash or rebase if necessary),
 
-* [[desktop-activity.md.md#coding-standards\|desktop-activity.md.md#coding-standards]], (on the other hand, expect flake8 changes to be in separate commits),
+* [ ] is the changed code consistent in style with the existing code, see also [coding standards](desktop-activity.md#coding-standards), (on the other hand, expect flake8 changes to be in separate commits),
 
 * [ ] for critical repositories, does the change work properly on our latest version of Sugar on either Fedora, Debian, or Ubuntu.
 
@@ -341,7 +343,7 @@ Goals for review are to;
 
 - sugar, sugar-toolkit, sugar-toolkit-gtk3, sugar-artwork, sugar-datastore, gst-plugins-espeak,
 
-- each of the [[https://wiki.sugarlabs.org/go/Development_Team/Release/Modules#Fructose\|https://wiki.sugarlabs.org/go/Development_Team/Release/Modules#Fructose]] activity set repositories,
+- each of the [Fructose](https://wiki.sugarlabs.org/go/Development_Team/Release/Modules#Fructose) activity set repositories,
 
 Frequently Asked Questions
 --------------------------

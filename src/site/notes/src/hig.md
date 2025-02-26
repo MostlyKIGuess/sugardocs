@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/hig/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/hig/
 ---
 
 Human Interface Guidelines

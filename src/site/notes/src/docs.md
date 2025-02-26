@@ -1,12 +1,14 @@
 ---
-{"dg-publish":true,"permalink":"/src/docs/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/docs/
 ---
 
 Improving this documentation
 ============================
 
 Have you found an error in these docs, or want to improve them?
-Please [[contact.md.md\|contact us]] or directly send pull requests to
+Please [contact us](src/contact) or directly send pull requests to
 the [GitHub repository](https://github.com/sugarlabs/sugar-docs).
 
 This documentation lives in <https://github.com/sugarlabs/sugar-docs>

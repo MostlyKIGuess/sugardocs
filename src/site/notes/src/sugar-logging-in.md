@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/sugar-logging-in/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/sugar-logging-in/
 ---
 
 # Guide to logging in with the Sugar desktop
@@ -35,13 +37,13 @@ To log in with the Sugar Desktop, select **Sugar** at the login screen before lo
 
 * Select `Sugar` after clicking the `gear` icon
 
-![images/gdm3-sugar-live-build.gif|Live Build Debian GDM](/img/user/src/images/gdm3-sugar-live-build.gif)
+![Live Build Debian GDM](images/gdm3-sugar-live-build.gif)
 
 **LIGHTDM** - Demonstrated on *Sugar Live Build (Debian)*
 
 * Select `Sugar` after clicking the `gnome footprint icon`
 
-![images/lightdm-sugar-live-build.gif|Live Build Debian LIGHTDM](/img/user/src/images/lightdm-sugar-live-build.gif)
+![Live Build Debian LIGHTDM](images/lightdm-sugar-live-build.gif)
 
   
 
@@ -49,25 +51,25 @@ To log in with the Sugar Desktop, select **Sugar** at the login screen before lo
 
 * Select `Sugar` from the `gear icon` on the right
 
-![images/gdm3-ubuntu-20.10.gif|Ubuntu Groovy Gorilla GDM](/img/user/src/images/gdm3-ubuntu-20.10.gif)
+![Ubuntu Groovy Gorilla GDM](images/gdm3-ubuntu-20.10.gif)
 
 **GDM** - Demonstrated on *Ubuntu (Focal Fossa)*
 
 * Select `Sugar` from the `gear icon` on the right
 
-![images/gdm3-ubuntu-20.04.gif|Ubuntu Focal Fossa GDM](/img/user/src/images/gdm3-ubuntu-20.04.gif)
+![Ubuntu Focal Fossa GDM](images/gdm3-ubuntu-20.04.gif)
   
 
 **SDDM** - Demonstrated on *Manjaro*
 
 * Switch user and select `Sugar` from the `drop down`
 
-![images/sddm-manjaro.gif|Manjaro SDDM](/img/user/src/images/sddm-manjaro.gif)
+![Manjaro SDDM](images/sddm-manjaro.gif)
 
 
 ## See Also
 
-You can take a look at other Display Managers [[Debian Wiki)](Debian Wiki\|here (Debian Wiki)]]) and [[Arch Wiki).](Arch Wiki\|here (Arch Wiki).]].)
+You can take a look at other Display Managers [here (Debian Wiki)](https://wiki.debian.org/DisplayManager) and [here (Arch Wiki).](https://wiki.archlinux.org/index.php/Display_manager)
 
 https://gitlab.gnome.org/GNOME/gdm
 

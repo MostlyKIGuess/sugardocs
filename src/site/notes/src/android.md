@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/android/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/android/
 ---
 
 Sugar on Android
@@ -61,7 +63,7 @@ An activity launcher for Android shell
 
 In Android is possible to replace the default launcher. A launcher is
 basically a normal app, that has an Intent with a category
-[[http://developer.android.com/reference/android/content/Intent.html#CATEGORY_HOME\|http://developer.android.com/reference/android/content/Intent.html#CATEGORY_HOME]].
+[CATEGORY_HOME](http://developer.android.com/reference/android/content/Intent.html#CATEGORY_HOME).
 
 Being a normal Android app, it can be a web activity.  And it would be
 possible to put colors to the launcher SVG icons and organize them in

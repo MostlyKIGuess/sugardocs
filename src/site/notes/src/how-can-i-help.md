@@ -1,15 +1,17 @@
 ---
-{"dg-publish":true,"permalink":"/src/how-can-i-help/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/how-can-i-help/
 ---
 
 # How Can I Help?
 ## Table Of Contents
-1.  [[src/how-can-i-help#-prepare\|Prepare]]
-2.  [[src/how-can-i-help#-coding-documentation-and-quality-assurance\|Coding/Documentation/Quality Assurance]]
-3.  [[src/how-can-i-help#-design\|Design]]
-4.  [[src/how-can-i-help#-marketingoutreach\|Marketing/Outreach]]
-5.  [[src/how-can-i-help#-important-sugar-labs-links\|Important Links]]
-5.  [[src/how-can-i-help#IM-STUCK\|I'm Stuck!]]
+1.  [Prepare](#-prepare)
+2.  [Coding/Documentation/Quality Assurance](#-coding-documentation-and-quality-assurance)
+3.  [Design](#-design)
+4.  [Marketing/Outreach](#-marketingoutreach)
+5.  [Important Links](#-important-sugar-labs-links)
+5.  [I'm Stuck!](#IM-STUCK)
 
 ## <a name="PREPARE"></a> Prepare
 Before contributing to Sugar Labs, you should use Music Blocks, Sugarizer or Sugar Desktop.
@@ -105,12 +107,12 @@ Coding, documentation and quality assurance is important - it is required everyw
   * Another way you can contribute to Sugar Labs is the [Release Engineer's Feature Tracking page](https://wiki.sugarlabs.org/go/Features). These are features proposed and implemented by other Sugar Labs community contributors. The progress of the feature is also indicated in the page - please contribute to tasks which are "In Progress".
   * You can test Sugar and Activities and familiarise yourself with Sugar, making a note of where your expectation is betrayed by your observations, then seek feedback from others to learn if your expectation was right, and post inconsistencies to the corresponding GitHub repository issues page, [Wiki](https://wiki.sugarlabs.org), or mailing list [sugar-devel@lists.laptop.org][2],
   * You can go to a specific GitHub repository and work on the bugs in the source code.  Choose the "Issues" tabs and work through the various issues listed in it. The main Sugar Labs GitHub Repositories are listed in the "Important Sugar Labs Links".
-  * You can write documentation, see the [Wiki](https://wiki.sugarlabs.org), the [Help Activity](http://wiki.sugarlabs.org/go/Activities/Help/Contribute) which is kept in the [Help](https://github.com/godiard/help-activity) repository, and this [[docs.md.md\|developer documentation]].
+  * You can write documentation, see the [Wiki](https://wiki.sugarlabs.org), the [Help Activity](http://wiki.sugarlabs.org/go/Activities/Help/Contribute) which is kept in the [Help](https://github.com/godiard/help-activity) repository, and this [developer documentation](src/docs).
   * You can update web sites, see [www.sugarlabs.org](https://www.sugarlabs.org/) which is kept in the [www-sugarlabs](https://github.com/sugarlabs/www-sugarlabs) repository.
   * You can choose to write your own [desktop activity][1] or write your own [web activity][5].
-  * You can port activities which are in GTK+ 2 to GTK+ 3, using the [[gtk3-porting-guide.md.md\|guide]].
-  * You can port activities which are in Python 2 to Python 3, using the [[python-porting-guide.md.md\|guide]].
-  * You can test code coverage of activities, using the [[python-coverage-guide.md.md\|guide]].
+  * You can port activities which are in GTK+ 2 to GTK+ 3, using the [guide](src/gtk3-porting-guide).
+  * You can port activities which are in Python 2 to Python 3, using the [guide](src/python-porting-guide).
+  * You can test code coverage of activities, using the [guide](src/python-coverage-guide).
 
 ## <a name="DESIGN-TEAM"></a> Design
 Design is also crucial to Sugar Labs - it is where new ideas and initiatives are formed into proper reports which can be worked on. You can either contribute a new design proposal or implement an existing one in the [Design Team User Experience Proposals wiki page](https://wiki.sugarlabs.org/go/Design_Team/Proposals).
@@ -150,13 +152,13 @@ __Other Relevant Links__
 
   * [Sugar Labs Website](https://www.sugarlabs.org/)
   * [Sugar Labs Wiki](https://wiki.sugarlabs.org/go/Welcome_to_the_Sugar_Labs_wiki)
-  * [[https://matrix.to/#/\|https://matrix.to/#/#/#/#/#/#/#/#/#sugar:matrix.org]]
+  * [Sugar Labs Matrix Channel](https://matrix.to/#/#sugar:matrix.org)
 
 ## <a name="IM-STUCK"></a>I'm Stuck!
 Well, don't worry; there are real people here who will try to help you. Some
 ways to get in touch with real people are:
 
-* [[https://matrix.to/#/\|https://matrix.to/#/#/#/#/#/#/#/#/#sugar:matrix.org]].
+* [Hang out on the Matrix channel](https://matrix.to/#/#sugar:matrix.org).
 * [Send an email on the mailing list][3]
 
 

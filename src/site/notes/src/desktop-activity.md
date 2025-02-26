@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/desktop-activity/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/desktop-activity/
 ---
 
 Write your own Sugar desktop activity
@@ -11,7 +13,7 @@ Toolkit](https://github.com/sugarlabs/sugar-toolkit-gtk3) libraries.
 Some Sugar desktop activities are written in languages other than
 Python, such as Smalltalk, C, and JavaScript.  For new activities to
 run on both Sugar desktop and Sugarizer, please consider [Write your
-own Sugar web activity](web-activity.md).
+own Sugar web activity](src/web-activity).
 
 This page shows how to develop an activity using Python 3 with Sugar Toolkit.
 
@@ -103,7 +105,7 @@ graphic design.
 
 Here is `activity/activity-helloworld.svg`;
 
-![[images/activity-helloworld.svg "Activity icon"\|Activity Icon]]
+![Activity Icon](images/activity-helloworld.svg "Activity icon")
 
 You should rename this file and change `icon` in the `activity.info`
 file.
@@ -113,7 +115,7 @@ Your activity icon must follow the guidelines as described in
 Icons](https://wiki.sugarlabs.org/go/Human_Interface_Guidelines/The_Sugar_Interface/Icons) on our Wiki.
 
 There is a helper script, [Sugar
-Iconify](sugar-iconify.md) that will help
+Iconify](src/sugar-iconify) that will help
 you create Sugar-compliant icons.
 
 Of course, the interesting changes will be the ones you make to the
@@ -206,7 +208,7 @@ activity.
 
 ### Check Python Coverage of your activity
 
-You can check the Python Coverage of your activity by following [[python-coverage-guide.md.md\|this]] guide.
+You can check the Python Coverage of your activity by following [this](src/python-coverage-guide) guide.
 
 ### Ready to release
 

@@ -1,7 +1,8 @@
 ---
-{"dg-publish":true,"permalink":"/src/code-of-conduct/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/code_of_conduct/
 ---
-
 
 Code of Conduct
 ===============

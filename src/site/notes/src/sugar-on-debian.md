@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/sugar-on-debian/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/sugar-on-debian/
 ---
 
 # Tutorial on installing Sugar on Debian

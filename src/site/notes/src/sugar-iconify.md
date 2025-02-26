@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/sugar-iconify/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/sugar-iconify/
 ---
 
 # Sugar Iconify

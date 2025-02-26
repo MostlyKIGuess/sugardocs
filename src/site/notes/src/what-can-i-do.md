@@ -1,7 +1,9 @@
 ---
-{"dg-publish":true,"permalink":"/src/what-can-i-do/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/what-can-i-do/
 ---
 
 # Page Moved
 
-Sorry, we moved this page to [[how-can-i-help.md.md\|How can I help?]].
+Sorry, we moved this page to [How can I help?](src/how-can-i-help).

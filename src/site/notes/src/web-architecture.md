@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/web-architecture/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/web-architecture/
 ---
 
 Sugar web architecture
@@ -55,7 +57,7 @@ being developed.  The interface ends up calling the same bits as GTK
 activities.  It uses WebSockets for the communication between
 JavaScript and Python code.
 
-![[images/arch-gtk.png "GTK architecture"\|GTK architecture]]
+![GTK architecture](images/arch-gtk.png "GTK architecture")
 
 ### Web activities on Android
 
@@ -87,7 +89,7 @@ shell sending an [Intent
 message](http://developer.android.com/guide/components/intents-filters.html),
 for which the shell has an Intent filter that matches.
 
-![[images/arch-android.png "Android architecture"\|Android architecture]]
+![Android architecture](images/arch-android.png "Android architecture")
 
 The Sugar shell on Android should implement all of the Sugar features,
 unlike Sugar GTK shell that only needs to connect to the current
@@ -100,7 +102,7 @@ The standalone web activities are rendered in any modern web browser. They might
 have limited functionality but should be as functional as possible. The same
 libraries as with the other web activities are used.
 
-![[images/arch-standalone.png "Standalone architecture"\|Standalone architecture]]
+![Standalone architecture](images/arch-standalone.png "Standalone architecture")
 
 
 Tools

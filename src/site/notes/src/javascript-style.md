@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/javascript-style/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/javascript-style/
 ---
 
 Code style for Sugar JavaScript development
@@ -12,7 +14,7 @@ General
 
 ### Javascript
 
-* Make your code conform to JSHint. [[src/javascript-style#jshint\|See explanation below]].
+* Make your code conform to JSHint. [See explanation below](#jshint).
 
 * When writing new code, use 4 spaces for indentation, but when editing existing code, use the same indentation style.
 

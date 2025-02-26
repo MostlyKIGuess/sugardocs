@@ -1,5 +1,7 @@
 ---
-{"dg-publish":true,"permalink":"/src/contact/"}
+dg-publish: true
+noteIcon: ''
+permalink: /src/contact/
 ---
 
 Contact
