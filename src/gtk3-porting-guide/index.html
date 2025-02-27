@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>gtk3-porting-guide</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script async type="module">import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" integrity="sha512-hpZ5pDCF2bRCweL5WoA0/N1elet1KYL5mx3LP555Eg/0ZguaHawxNvEjF6O3rufAChs16HVNhEc6blF/rZoowQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-sv0slik/5O0JIPdLBCR2A3XDg/1U3WuDEheZfI/DI5n8Yqc3h5kjrnr46FGBNiUAJF7rE4LHKwQ/SoSLRKAxEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script async src="https://cdn.jsdelivr.net/npm/lucide@0.115.0/dist/umd/lucide.min.js"></script>
+<script>window.addEventListener("load",(()=>{document.querySelectorAll(".callout").forEach((e=>{const t=getComputedStyle(e).getPropertyValue("--callout-icon"),l=t&&t.trim().replace(/^lucide-/,"");if(l){const t=e.querySelector(".callout-title");if(t){const e=document.createElement("div"),c=document.createElement("i");e.appendChild(c),c.setAttribute("icon-name",l),e.setAttribute("class","callout-icon"),t.insertBefore(e,t.firstChild)}}})),lucide.createIcons(),Array.from(document.querySelectorAll(".callout.is-collapsible")).forEach((e=>{e.querySelector(".callout-title").addEventListener("click",(t=>{e.classList.contains("is-collapsed")?e.classList.remove("is-collapsed"):e.classList.add("is-collapsed")}))}))}))</script>
+<script async src="https://fastly.jsdelivr.net/npm/force-graph@1.43.0/dist/force-graph.min.js"></script>
+<script async src="https://fastly.jsdelivr.net/npm/@alpinejs/persist@3.11.1/dist/cdn.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js" async></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer" async>
+<script src="https://fastly.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" async></script>
+<link href="/styles/digital-garden-base.css" rel="stylesheet">
+<link href="/styles/obsidian-base.css" rel="stylesheet">
+<link href="/styles/_theme.c1c6ee59.css" rel="stylesheet">
+<link href="/styles/custom-style.css" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<style></style>
+</head>
+<body class="theme-light markdown-preview-view markdown-rendered markdown-preview-section">
+<div x-init="isDesktop = (window.innerWidth>=1400) ? true: false;" x-on:resize.window="isDesktop = (window.innerWidth>=1400) ? true : false;" x-data="{isDesktop: true, showFilesMobile: false}">
+<div x-show.important="!isDesktop" style="display:none">
+<nav class="navbar">
+<div class="navbar-inner">
+<span style="font-size:1.5rem;margin-right:10px" @click="showFilesMobile=!showFilesMobile"><i icon-name="menu"></i></span>
+<a href="/" style="text-decoration:none">
+<h1 style="margin:15px!important">Sugar-Docs</h1>
+</a>
+</div>
+<div class="search-button align-icon" onclick="toggleSearch()">
+<span class="search-icon">
+<i icon-name="search"></i>
+</span>
+<span class="search-text">
+<span>Search</span>
+<span style="font-size:.6rem;padding:2px 2px 0 6px;text-align:center;transform:translateY(4px)" class="search-keys">
+CTRL + K
+</span>
+</span>
+</div>
+</nav>
+</div>
+<div x-show="showFilesMobile && !isDesktop" @click="showFilesMobile = false" style="display:none" class="fullpage-overlay"></div>
+<nav class="filetree-sidebar" x-show.important="isDesktop || showFilesMobile" style="display:none">
+<a href="/" style="text-decoration:none">
+<h1 style="text-align:center">Sugar-Docs</h1>
+</a>
+<div style="display:flex;justify-content:center">
+<div class="search-button align-icon" onclick="toggleSearch()">
+<span class="search-icon">
+<i icon-name="search"></i>
+</span>
+<span class="search-text">
+<span>Search</span>
+<span style="font-size:.6rem;padding:2px 2px 0 6px;text-align:center;transform:translateY(4px)" class="search-keys">
+CTRL + K
+</span>
+</span>
+</div>
+</div>
+<div class="folder" x-data="{isOpen: true}">
+<div x-show="isOpen" style="display:none" class="">
+<div class="folder inner-folder" x-data="{isOpen: $persist(false).as('src')}" @click.stop="isOpen=!isOpen">
+<div class="foldername-wrapper align-icon">
+<i x-show="isOpen" style="display:none" icon-name="chevron-down"></i>
+<i x-show="!isOpen" icon-name="chevron-right"></i>
+<span class="foldername">src</span>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/android/">android </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/code-of-conduct/">code-of-conduct </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/contact/">contact </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/contributing/">contributing </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/desktop-activity/">desktop-activity </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/dev-environment/">dev-environment </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/docs/">docs </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink active-note"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/gtk3-porting-guide/">gtk3-porting-guide </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/hig/">hig </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/how-can-i-help/">how-can-i-help </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/javascript-style/">javascript-style </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/languages/">languages </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/memory-leaks/">memory-leaks </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/python-coverage-guide/">python-coverage-guide </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/python-porting-guide/">python-porting-guide </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/python-style/">python-style </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/sugar-iconify/">sugar-iconify </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/sugar-logging-in/">sugar-logging-in </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/sugar-on-debian/">sugar-on-debian </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/web-activity/">web-activity </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/web-architecture/">web-architecture </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/web-style/">web-style </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="filelist">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/src/what-can-i-do/">what-can-i-do </a>
+</div>
+</div>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/index/">index </a>
+</div>
+</div>
+<div x-show="isOpen" style="display:none" class="">
+<div @click.stop class="notelink"><i icon-name="sticky-note" aria-hidden="true"></i><a data-note-icon="" style="text-decoration:none" class="filename" href="/">README </a>
+</div>
+</div>
+</div>
+</nav>
+</div>
+<div class="search-container" id="globalsearch" onclick="toggleSearch()">
+<div class="search-box">
+<input type="search" id="term" placeholder="Start typing...">
+<div id="search-results"></div>
+<footer class="search-box-footer">
+<div class="navigation-hint">
+<span>Enter to select</span>
+</div>
+<div class="navigation-hint align-icon">
+<i icon-name="arrow-up" aria-hidden="true"></i>
+<i icon-name="arrow-down" aria-hidden="true"></i>
+<span>to navigate</span>
+</div>
+<div class="navigation-hint">
+<span>ESC to close</span>
+</div>
+</footer>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js"></script>
+<script>document.addEventListener("DOMContentLoaded",init,!1),document.addEventListener("DOMContentLoaded",setCorrectShortcut,!1),window.toggleSearch=function(){document.getElementById("globalsearch").classList.contains("active")?document.getElementById("globalsearch").classList.remove("active"):(document.getElementById("globalsearch").classList.add("active"),document.getElementById("term").focus())},window.toggleTagSearch=function(e){console.log(e.textContent);const t=e.textContent;t&&(window.document.getElementById("term").value=t.trim(),window.toggleSearch(),window.search())};const loadingSvg='\n    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">\n      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="1.5s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="1.5s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="1.5s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="3s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="3s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="3s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="8">\n              <animate attributeName="r"\n                   begin="0s" dur="1.5s"\n                   values="6;1;2;3;4;5;6"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n      </g>\n  </svg>';function debounce(e,t,n){var a;return function(){var r=this,i=arguments,c=n&&!a;clearTimeout(a),a=setTimeout((function(){a=null,n||e.apply(r,i)}),t),c&&e.apply(r,i)}}function setCorrectShortcut(){navigator.platform.toUpperCase().indexOf("MAC")>=0&&document.querySelectorAll(".search-keys").forEach((e=>e.innerHTML="⌘ + K"))}function createIndex(e){const t=e=>e.toLowerCase().split(/([^a-z]|[^\x00-\x7F])/),n=new FlexSearch.Document({cache:!0,charset:"latin:extra",optimize:!0,index:[{field:"content",tokenize:"reverse",encode:t},{field:"title",tokenize:"forward",encode:t},{field:"tags",tokenize:"forward",encode:t}]});return e.forEach(((e,t)=>{n.add({id:t,title:e.title,content:e.content,tags:e.tags})})),n}async function init(){let e=!0;if(localStorage.getItem("searchIndex")){let{date:t,docs:n}=JSON.parse(localStorage.getItem("searchIndex"));if("2025-02-27T13:13:29.026Z"===t){e=!1;let t=createIndex(n);window.docs=n,window.index=t}}if(e){let e=await(await fetch("/searchIndex.json?v=2025-02-27T13:13:29.026Z")).json(),t=createIndex(e);localStorage.setItem("searchIndex",JSON.stringify({date:"2025-02-27T13:13:29.026Z",docs:e})),window.docs=e,window.index=t}document.addEventListener("keydown",(e=>{if((e.ctrlKey||e.metaKey)&&"k"===e.key&&(e.preventDefault(),toggleSearch()),"Escape"===e.key&&document.getElementById("globalsearch").classList.remove("active"),document.getElementById("globalsearch").classList.contains("active")){if("ArrowDown"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.nextElementSibling?t.nextElementSibling.classList.add("active"):document.querySelector(".searchresult").classList.add("active")):document.querySelector(".searchresult").classList.add("active");let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("ArrowUp"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.previousElementSibling?t.previousElementSibling.classList.add("active"):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling||e.classList.add("active")}))):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling&&e.classList.add("active")}));let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("Enter"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t&&(window.location.href=t.querySelector("a").href)}}}));const t=debounce(search,200,!1);field=document.querySelector("#term"),field.addEventListener("keydown",(e=>{"ArrowDown"!==e.key&&"ArrowUp"!==e.key&&t()})),resultsDiv=document.querySelector("#search-results");const n=new URL(location.href).searchParams;n.get("q")&&(field.setAttribute("value",n.get("q")),toggleSearch(),search())}async function search(){let e=field.value.trim();if(!e)return;if(e==lastSearch)return;console.log(`search for ${e}`),window.lastSearch=e,resultsDiv.innerHTML=loadingSvg;let t=offlineSearch(e),n="";if(!t.length){let t=document.createElement("p");return t.innerText=`No results for "${e}"`,resultsDiv.innerHTML="",void resultsDiv.appendChild(t)}n+='<div style="max-width:100%;">',t.forEach((e=>{e.tags&&e.tags.length>0?n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        <div class="header-meta">\n                            <div class="header-tags">\n                                ${e.tags.map((e=>'<a class="tag" href="JavaScript:Void(0);">#'+e+"</a>")).join("")}\n                            </div>\n                        </div>\n                        ${e.content}\n                    </div>\n                </div>`:n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        ${e.content}\n                    </div>\n                </div>`})),n+="</div>",resultsDiv.innerHTML=n}function truncate(e,t){return(e=e.replaceAll(/<[^>]*>/g,"")).length<t?e:e.substring(0,t-3)+"..."}function offlineSearch(e){let t=window.docs,n="#"===e[0]&&e.length>1?index.search(e.substring(1),[{field:"tags"}]):index.search(e,[{field:"title",limit:5},{field:"content",weight:10}]);const a=e=>{const t=n.filter((t=>t.field===e));return 0===t.length?[]:[...t[0].result]};return[...new Set([...a("title"),...a("content"),...a("tags")])].map((e=>{let n=t[e];return n.content=truncate(n.content,400),n.tags=n.tags.filter((e=>"gardenEntry"!=e&&"note"!=e)),n}))}window.lastSearch=""</script>
+<main class="content cm-s-obsidian">
+<header>
+<div class="header-meta">
+</div>
+</header>
+<h1 id="gtk-3-porting-guide" tabindex="-1">GTK 3 Porting Guide</h1>
+<p>Guide to porting Sugar Activities to GTK 3.</p>
+<h2 id="gtk" tabindex="-1">GTK</h2>
+<p>GTK is a library for creating graphical user interfaces. GTK is written in C. GTK for Python is a language binding.</p>
+<ul>
+<li><a href="https://gtk.org/" target="_blank" class="external-link">GTK</a></li>
+</ul>
+<p>GTK 2 is the previous major version of GTK. GTK 2 for Python is a static binding, and is called PyGTK. GTK 2 is soon to be obsolete and unavailable.</p>
+<ul>
+<li><a href="http://pygtk.org/" target="_blank" class="external-link">PyGTK</a></li>
+<li><a href="https://developer.gnome.org/gtk2/stable/" target="_blank" class="external-link">GTK 2 Reference Manual</a></li>
+</ul>
+<p>GTK 3 is the current major version of GTK. It breaks both API and ABI compared with GTK 2. GTK 3 for Python is a GObject Introspection binding, using PyGObject.</p>
+<ul>
+<li><a href="https://wiki.gnome.org/Projects/PyGObject" target="_blank" class="external-link">PyGObject</a></li>
+<li><a href="https://lazka.github.io/pgi-docs/" target="_blank" class="external-link">PyGObject API Reference</a></li>
+<li><a href="https://developer.gnome.org/gtk3/stable/" target="_blank" class="external-link">GTK 3 Reference Manual</a></li>
+</ul>
+<h2 id="sugar-toolkit" tabindex="-1">Sugar Toolkit</h2>
+<p>Sugar Toolkit provides services and a set of GTK widgets to build activities and other Sugar components on Linux based computers using Python.</p>
+<ul>
+<li><a href="https://github.com/sugarlabs/sugar-toolkit" target="_blank" class="external-link">Sugar Toolkit for GTK 2</a>, module name <code>sugar</code>, uses PyGTK,</li>
+<li><a href="https://github.com/sugarlabs/sugar-toolkit-gtk3" target="_blank" class="external-link">Sugar Toolkit for GTK 3</a>, module name <code>sugar3</code>, uses PyGObject,</li>
+<li><a href="https://developer.sugarlabs.org/sugar3" target="_blank" class="external-link">Sugar Toolkit for GTK 3 Documentation</a></li>
+</ul>
+<h2 id="sugar-activities" tabindex="-1">Sugar Activities</h2>
+<p>New Sugar activities are written in either;</p>
+<ul>
+<li>JavaScript using the <a href="https://github.com/sugarlabs/sugar-web" target="_blank" class="external-link">Sugar Web</a> tools, or</li>
+<li>Python using GTK 3 and Sugar Toolkit for GTK 3,</li>
+</ul>
+<p>Old Sugar activities were written in Python using GTK 2 and Sugar Toolkit for GTK 2.</p>
+<p>These old activities are to be ported to GTK 3. This guide explains how.</p>
+<h2 id="required-skills" tabindex="-1">Required Skills</h2>
+<ul>
+<li>application development in Python,</li>
+<li>application development in GTK 2 and GTK 3, using the event loop model,</li>
+<li>Sugar activity development,</li>
+<li>use of PyGObject API libraries.</li>
+</ul>
+<h2 id="how-to-port-to-gtk-3" tabindex="-1">How to Port to GTK 3</h2>
+<p>General information for all GTK applications;</p>
+<ul>
+<li><a href="http://pygobject.readthedocs.io/en/latest/guide/porting.html" target="_blank" class="external-link">PyGObject - Porting from Static Bindings</a> part of the PyGObject documentation, focusing on Python,</li>
+<li><a href="http://live.gnome.org/PyGObject/IntrospectionPorting" target="_blank" class="external-link">PyGObject - Introspection Porting</a> on the GNOME Wiki, focusing on Python,</li>
+<li><a href="https://developer.gnome.org/gtk3/stable/gtk-migrating-2-to-3.html" target="_blank" class="external-link">Migrating from GTK 2 to GTK 3</a> part of the GTK documentation, focusing on the underlying C library and object classes, but is relevant to Python porting because the same classes are used.</li>
+</ul>
+<h2 id="how-to-port-a-sugar-activity-to-gtk-3" tabindex="-1">How to Port a Sugar Activity to GTK 3</h2>
+<ul>
+<li>
+<p>Set up development environment for Sugar on GTK 3; such as Ubuntu 18.04,</p>
+</li>
+<li>
+<p>Set up test environments capable of both GTK 2 and GTK 3 at the same time; such as Ubuntu 16.04,</p>
+</li>
+<li>
+<p>Quiesce the activity source by making sure the activity works properly before porting, fixing any bugs, closing any solved issues, merging any pull requests or branches and releasing the last GTK 2 version; see the activity <a href="contributing.md#checklist---maintainer" target="_blank" class="external-link">maintainer checklist</a>.</p>
+</li>
+<li>
+<p>Port to Sugar Toolkit for GTK 3 (see below),</p>
+</li>
+<li>
+<p>Port to GTK 3, using the <a href="https://gitlab.gnome.org/GNOME/pygobject/blob/master/tools/pygi-convert.sh" target="_blank" class="external-link">PyGObject script pygi-convert.sh</a> to convert automatically much as it can.</p>
+</li>
+<li>
+<p>Port to any other libraries, such as Sugargame, Cairo, Pango, GConf to Gio.Settings, GStreamer 0.10 to GStreamer 1.0,</p>
+</li>
+<li>
+<p>Test and iterate until original functionality is reached.</p>
+</li>
+</ul>
+<p>Follow the <a href="https://github.com/sugarlabs/sugar-docs/blob/master/src/contributing.md" target="_blank" class="external-link">Code Guidelines</a> during all porting.</p>
+<p>Write any comments in the code, by adding <strong># README:</strong>, <strong># TODO:</strong> and <strong># FIXME:</strong> explaining what are the problems that you are having with that chunk of code. Put a link if it's necessary.</p>
+<h2 id="port-to-sugar-toolkit-for-gtk-3" tabindex="-1">Port to Sugar Toolkit for GTK 3</h2>
+<ul>
+<li>The namespace is changed from <code>sugar</code> to <code>sugar3</code>, which reflects<br>
+that GTK 3 is the underlying technology, use a script to automate the rename of the imports <code>sugar</code> to<br>
+<code>sugar3</code>, <a href="http://dev.laptop.org/~manuq/sugar-convert.sh" target="_blank" class="external-link">sugar-convert.sh</a>,</li>
+<li>The keep button has been removed</li>
+<li>The old-style toolbar has been removed</li>
+<li><code>set_toolbar_box</code> is used instead of <code>set_toolbox</code></li>
+<li>Remove import of deprecated ActivityToolbox (see<br>
+<a href="http://git.sugarlabs.org/hello-world/mainline/commit/22060a3063b2d6fd38d6b1cd8d44946170255af3" target="_blank" class="external-link">hello-world</a>)</li>
+<li>Support for <code>service_name</code> and <code>class</code> tags in <a href="http://activity.info" target="_blank" class="external-link">activity.info</a> has<br>
+been removed. Use <code>bundle_id</code> instead of <code>service_name</code> and <code>exec</code><br>
+instead of <code>class</code> (see in<br>
+<a href="http://git.sugarlabs.org/record/mainline/commit/6e8968c71e474e2d8d86886badf5cf7d70217dc5" target="_blank" class="external-link">Record</a>)</li>
+<li><code>sugar3.activity.Activity</code> does not have the <em>window</em> attribute. Use<br>
+the <code>.get_window()</code> method instead.</li>
+</ul>
+<h2 id="port-to-gtk-3" tabindex="-1">Port to GTK 3</h2>
+<p>To start, change the importing instruction for GTK from</p>
+<pre><code class="language-python">import gtk
+</code></pre>
+<p>to</p>
+<pre><code class="language-python">import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+</code></pre>
+<p>Note that <code>require_version</code> needs to called only the first time when GTK<br>
+is being imported.</p>
+<p>Similar imports that may be used are:</p>
+<pre><code class="language-python">from gi.repository import Gdk, Pango, GObject
+</code></pre>
+<p>Then you have to change each call that involves GTK, for example<br>
+creating a button will look now like this:</p>
+<pre><code class="language-python">button = Gtk.Button()
+</code></pre>
+<p>A simple hello world program in GTK 3 looks like this:</p>
+<pre><code class="language-python">from gi.repository import Gtk
+
+def _destroy_cb(widget, data=None):
+    Gtk.main_quit()
+
+w = Gtk.Window()
+w.connect(&quot;destroy&quot;, _destroy_cb)
+label = Gtk.Label('Hello World!')
+w.add(label)
+w.show_all()
+
+Gtk.main()
+</code></pre>
+<p>The changes that were needed to port the hello-world activity can be<br>
+seen in <a href="https://github.com/sugarlabs/hello-world/commit/508e1c518b56cbde5508e560c8a2ff38a3518583" target="_blank" class="external-link">this<br>
+commit.</a></p>
+<h2 id="problems" tabindex="-1">Problems</h2>
+<p>Several common problems arise during a port.</p>
+<h3 id="simple-example-on-creating-a-toolbar" tabindex="-1">Simple example on creating a toolbar</h3>
+<p>A Sugar Activity has a toolbar.<br>
+These are the relevant modules required to create a simple toolbar containing the activity button and the stop button.</p>
+<pre><code class="language-python">from sugar3.activity import activity
+from sugar3.graphics.toolbarbox import ToolbarBox
+from sugar3.activity.widgets import ActivityToolbarButton
+from sugar3.activity.widgets import StopButton
+from sugar3.graphics.toolbarbox import ToolbarButton
+from sugar3.graphics import style
+</code></pre>
+<p>Since the ActivityToolbar() module has been deprecated, the toolbar can<br>
+now be called using <code>ToolbarBox()</code></p>
+<p>Then, from the ToolbarBox(), include the ActivityButton and StopButton.<br>
+In order for the StopButton to be align to the right as per Sugar<br>
+activity interface, a separator has to be included as well.</p>
+<pre><code class="language-python">toolbar_box = ToolbarBox()
+
+activity_button = ActivityToolbarButton(self)
+toolbar_box.toolbar.insert(activity_button, 0)
+activity_button.show()
+
+separator = Gtk.SeparatorToolItem()
+separator.props.draw = False
+separator.set_expand(True)
+toolbar_box.toolbar.insert(separator, -1)
+separator.show()
+
+stop_button = StopButton(self)
+toolbar_box.toolbar.insert(stop_button, -1)
+stop_button.show()
+self.set_toolbar_box(toolbar_box)
+toolbar_box.show()
+</code></pre>
+<h3 id="tools" tabindex="-1">Tools</h3>
+<p>If you are having trouble finding how a particular GTK<br>
+class/method/constant has been named in PyGI, run<br>
+<a href="http://dev.laptop.org/~dsd/20110806/pygi-enumerate.py" target="_blank" class="external-link">pygi-enumerate.py</a><br>
+and grep the output. (this app lists all identified methods and<br>
+constants). Usage example:</p>
+<pre><code class="language-shell">$ python pygi-enumerate.py | grep get_selection
+Gtk.AccelLabel.get_selection_bounds() (instance method)
+Gtk.Editable.get_selection_bounds() (instance method)
+Gtk.Entry.get_selection_bounds() (instance method)
+Gtk.IconView.get_selection_mode() (instance method)
+Gtk.Label.get_selection_bounds() (instance method)
+Gtk.SelectionData.get_selection() (instance method)
+Gtk.SpinButton.get_selection_bounds() (instance method)
+Gtk.TextBuffer.get_selection_bound() (instance method)
+Gtk.TextBuffer.get_selection_bounds() (instance method)
+Gtk.TreeView.get_selection() (instance method)
+</code></pre>
+<h3 id="constructor-considerations" tabindex="-1">Constructor considerations</h3>
+<p>With PyGI it is possible to use Python-like constructors, or “new”<br>
+functions e.g. the following are (usually) equivalent:</p>
+<pre><code class="language-python">label = Gtk.Button()
+label = Gtk.Button.new()
+</code></pre>
+<p>However, the first form is preferred: it is more Python-like.<br>
+Internally, the difference is that <code>Gtk.Label.new()</code> translates to a call<br>
+to <code>gtk_label_new()</code>, whereas <code>Gtk.Label()</code> will<br>
+directly construct an instance of GtkLabel at the GObject level.</p>
+<p>If the constructor takes parameters, they must be named. The<br>
+parameters correspond to GObject properties in the API documentation<br>
+which are usually marked as “Construct”. For example, the following code<br>
+will not work:</p>
+<pre><code class="language-python">expander = Gtk.Expander(&quot;my expander&quot;)
+</code></pre>
+<p>The (confusing) error is:</p>
+<pre><code class="language-shell">TypeError: GObject.__init__() takes exactly 0 arguments (1 given)
+</code></pre>
+<p>The solution is to go to the <a href="http://developer.gnome.org/gtk3/3.2/GtkExpander.html#GtkExpander.properties" target="_blank" class="external-link">GtkExpander API<br>
+documentation</a><br>
+and find the appropriate property that we wish to set. In this case it<br>
+is <b>label</b> (which is a Construct property, further increasing our<br>
+confidence of success), so the code should be:</p>
+<pre><code class="language-python">expander = Gtk.Expander(label=&quot;my expander&quot;)
+</code></pre>
+<p>Combining the two points above, if you wish to call a construct-like<br>
+function such as gtk_button_new_with_label(), you do have the option<br>
+of calling Gtk.Button.new_with_label(), however if we check the<br>
+<a href="http://developer.gnome.org/gtk3/3.2/GtkButton.html#GtkButton.properties" target="_blank" class="external-link">GtkButton<br>
+properties</a><br>
+we see one called &quot;label&quot; which is equivalent. Therefore<br>
+<code>gtk_button_new_with_label(&quot;foo&quot;)</code> should be called as:</p>
+<pre><code class="language-python">button = Gtk.Button(label=&quot;foo&quot;)
+</code></pre>
+<h3 id="h-box-v-box-pack-start-and-pack-end" tabindex="-1">HBox, VBox, pack_start and pack_end</h3>
+<p>GtkHBox and GtkVBox, commonly used containers in GTK 2 code, have<br>
+<code>pack_start</code> and <code>pack_end</code> methods. These take 4 parameters:</p>
+<ol>
+<li><strong>widget</strong>: The widget to pack into the container</li>
+<li><strong>expand</strong>: Whether the child should receive extra space when the<br>
+container grows (default True)</li>
+<li><strong>fill</strong>: True if space given to child by the expand option is<br>
+actually allocated to child, rather than just padding it. This<br>
+parameter has no effect if expand is set to False. A child is always<br>
+allocated the full height of a gtk.HBox and the full width of a<br>
+gtk.VBox. This option affects the other dimension. (default True)</li>
+<li><strong>padding</strong>: extra space in pixels to put between child and its<br>
+neighbor (default 0)</li>
+</ol>
+<p>In PyGTK, the expand, fill and padding parameters were optional: if<br>
+unspecified, the default values above were used. In PyGI, these<br>
+parameters are not optional: all 4 must be specified. Hence the<br>
+rules for adding in the extra parameters are:</p>
+<ol>
+<li>If <code>expand</code> was not set, use value True</li>
+<li>If <code>fill</code> was not set, use value True. (however, if expand is<br>
+False, this parameter gets ignored so False is an equally acceptable<br>
+option when expand=False)</li>
+<li>If <code>padding</code> was not set, use value 0.</li>
+</ol>
+<p>These parameters can be specified either as positional arguments or as<br>
+named keyword arguments, however all 4 must always be specified. Some<br>
+developers prefer keyword arguments, arguing that the following:</p>
+<pre><code class="language-python">    box.pack_start(widget, expand=True, fill=False, padding=4)
+</code></pre>
+<p>is much more readable than:</p>
+<pre><code class="language-python">    box.pack_start(widget, True, False, 4)
+</code></pre>
+<p>If you are using <code>pack_start</code> with the default values (expand=True,<br>
+fill=True and padding=0), you can avoid using <code>pack_start</code> (and the<br>
+parameter pain that it brings with it) by just using .add for some added<br>
+cleanliness, e.g.</p>
+<pre><code class="language-python">    box.pack_start(widget, True, True, 0)
+</code></pre>
+<p>can be replaced with:</p>
+<pre><code class="language-python">    box.add(widget)
+</code></pre>
+<p>In GTK 3, <code>GtkVBox</code> and <code>GtkHBox</code> have been deprecated, which means they might be removed later. The replacement is to use <code>GtkBox</code> directly, and you may wish to<br>
+make this change now. e.g.:</p>
+<pre><code class="language-python">    vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+    hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, homogeneous=True, spacing=8)
+</code></pre>
+<p>However, it must be noted that if <code>GtkBox</code> is used directly (instead of<br>
+using GtkHBox/GtkVBox), the default value of <code>expand</code> is now<br>
+<code>False</code>. The implications of this are:</p>
+<ol>
+<li>You need to check your .add() calls, as previously they would behave<br>
+as <code>pack_start</code> with expand=True, but now they will behave as<br>
+expand=False (you need to change them to use pack_start with<br>
+expand=True to retain the old behaviour)</li>
+<li>Every single <code>pack_start</code> call that has <code>expand=False</code> and <code>padding=0</code><br>
+(and any value of fill) can be converted to <code>.add()</code> for cleanliness</li>
+</ol>
+<h3 id="gtk-alignment-considerations" tabindex="-1">GtkAlignment considerations</h3>
+<p>In PyGTK, the <code>gtk.Alignment</code> constructor takes four optional parameters:</p>
+<ol>
+<li>xalign: the fraction of horizontal free space to the left of the<br>
+child widget. Ranges from 0.0 to 1.0. Default 0.0.</li>
+<li>yalign: the fraction of vertical free space above the child widget.<br>
+Ranges from 0.0 to 1.0. Default 0.0.</li>
+<li>xscale: the fraction of horizontal free space that the child widget<br>
+absorbs, from 0.0 to 1.0. Default 0.0.</li>
+<li>yscale: the fraction of vertical free space that the child widget<br>
+absorbs, from 0.0 to 1.0. Default 0.0</li>
+</ol>
+<p>In PyGI/GTK3, these parameters are still optional, however, the default values have changed. They are now:</p>
+<ol>
+<li>xalign: default 0.5</li>
+<li>yalign: default 0.5</li>
+<li>xscale: default 1</li>
+<li>yscale: default 1</li>
+</ol>
+<p>Additionally, PyGTK accepted these construction parameters as positional<br>
+arguments. As explained above, they must now be converted to keyword<br>
+arguments.</p>
+<h3 id="gtk-menu-popup" tabindex="-1">Gtk Menu Popup</h3>
+<p>The Gtk.Menu.popup function now works slightly differently. The user<br>
+supplied positioning function now takes different parameters. These are<br>
+menu, x, y, push_in and user_data.</p>
+<h3 id="gdk" tabindex="-1">Gdk</h3>
+<p>Previously, gdk was an attribute of the GTK module, which means that it<br>
+can be called through GTK. For example, if we want to use<br>
+color_parse():</p>
+<pre><code class="language-python">gtk.gdk.color_parse(color)
+</code></pre>
+<p>However, what we have to do now is:</p>
+<pre><code class="language-python">from gi.repository import Gdk
+</code></pre>
+<p>Then we can modify the code to the following:</p>
+<pre><code class="language-python">Gdk.color_parse(color)
+</code></pre>
+<h3 id="pango" tabindex="-1">Pango</h3>
+<p>Following the release of GTK 3, we should not be importing pango like<br>
+this:</p>
+<pre><code class="language-python">import pango
+</code></pre>
+<p>In fact, we can now import pango as an attribute within the GTK 3<br>
+library:</p>
+<pre><code class="language-python">from gi.repository import Pango as pango
+</code></pre>
+<h3 id="gio-settings-from-g-conf" tabindex="-1">Gio.Settings from GConf</h3>
+<p>Any use of GConf should be ported to Gio.Settings.</p>
+<h3 id="other-considerations" tabindex="-1">Other considerations</h3>
+<p><code>self.allocation</code> property is no longer available. <code>self.get_allocation()</code> should be used instead.</p>
+<p>So to get the allocation size:</p>
+<pre><code class="language-python">self.allocation.width
+self.allocation.height
+</code></pre>
+<p>should be replaced by:</p>
+<pre><code class="language-python">self.get_allocated_width()
+self.get_allocated_height()
+</code></pre>
+<h3 id="constants" tabindex="-1">Constants</h3>
+<p>Most of the constants have slightly different formats, e.g.,</p>
+<ul>
+<li><code>gtk.STATE_NORMAL</code> became <code>Gtk.StateFlags.NORMAL</code></li>
+<li><code>gtk.RESPONSE_ACCEPT</code> became <code>Gtk.ResponseType.ACCEPT</code></li>
+<li><code>gtk.JUSTIFY_CENTER</code> became <code>Gtk.Justification.CENTER</code></li>
+<li><code>gtk.RELIEF_NONE</code> became <code>Gtk.ReliefStyle.NONE</code></li>
+</ul>
+<h3 id="pixbufs" tabindex="-1">Pixbufs</h3>
+<p>The pixbuf libraries are in their own repository</p>
+<pre><code class="language-python">from gi.repository import GdkPixbuf
+GdkPixbuf.Pixbuf.new_from_file()
+</code></pre>
+<h3 id="changes-to-the-clipboard" tabindex="-1">Changes to the Clipboard</h3>
+<p>Two things to note:</p>
+<ol>
+<li>You need to specify a clipboard using get()</li>
+</ol>
+<pre><code class="language-python">clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+</code></pre>
+<ol start="2">
+<li>You need to pass a length to set_text()</li>
+</ol>
+<pre><code class="language-python">clipboard.set_text(string, len(string))
+</code></pre>
+<p>See <a href="http://python-gtk-3-tutorial.readthedocs.org/en/latest/clipboard.html" target="_blank" class="external-link">python-gtk-3-tutorial/clipboard</a> for more details.</p>
+<h3 id="changes-to-drag-and-drop" tabindex="-1">Changes to Drag-and-Drop</h3>
+<p>Slightly different syntax:</p>
+<pre><code class="language-python">self.drag_dest_set(Gtk.DestDefaults.ALL, [],
+                   Gdk.DragAction.COPY)
+self.drag_dest_set_target_list(Gtk.TargetList.new([]))
+self.drag_dest_add_text_targets()
+self.connect('drag_data_received', self._drag_data_received)
+</code></pre>
+<p>and:</p>
+<pre><code class="language-python">data.get_text()
+</code></pre>
+<p>or:</p>
+<pre><code class="language-python">data.get_image()
+</code></pre>
+<p>See<br>
+<a href="http://python-gtk-3-tutorial.readthedocs.org/en/latest/drag_and_drop.html" target="_blank" class="external-link">python-gtk-3-tutorial/drag_and_drop</a><br>
+for more details.</p>
+<h3 id="port-from-drawable-to-cairo" tabindex="-1">Port from Drawable to Cairo</h3>
+<p>GTK 3 does not support GTK Drawable objects, so the first step is to<br>
+get your activity running under Cairo.</p>
+<pre><code class="language-python">import cairo
+
+# From activity.Activity, you inherit a canvas.
+# Create a Cairo context from the window.
+cairo_context = self.canvas.get_window().cairo_create()
+# Create an XLib surface to be used for drawing
+xlib_surface = surface.create_similar(cairo.CONTENT_COLOR,
+                                      Gdk.Screen.width(),
+                                      Gdk.Screen.height())
+# Although Gdk.Screen.width() and Gdk.Screen.height() have been
+# deprecated from version 3.22 they can still be used.
+#
+# You'll need a Cairo context from which you'll build a GTK Cairo context
+cairo_context = cairo.Context(xlib_surface)
+# Use this context as you would a Drawable, substituting Cairo commands
+# for gtk commands, e.g.,
+# draw_line changes to line_to
+cairo_context.move_to(0, 0)
+cairo_context.line_to(100, 100)
+# Cairo uses floats from 0 to 1 for RGB values
+cairo_context.set_source_rgb(r, g, b)
+cairo_context.rectangle(x, y, w, h)
+cairo_context.fill()
+# To invalidate a region to force a refresh, use:
+self.canvas.queue_draw_area(x, y, w, h)
+# Handle the expose event
+# &quot;expose-event&quot; signal became &quot;draw&quot; signal for Gtk Widget
+# And it takes a cairo context instead of an expose event
+def draw(self, widget, cr):
+    x, y = cr.get_current_point()
+    width, height = widget.get_allocated_width(), widget.get_allocated_height()
+    cr.rectangle(x, y, width, height)
+    cr.clip()
+    cr.set_source_surface(xlib_surface)
+    cr.paint()
+</code></pre>
+<p>Pango is a bit different when used with Cairo:</p>
+<pre><code class="language-python">import pango, pangocairo
+
+# Again, from the xlib_surface...
+cairo_context = cairo.Context(xlib_surface)
+
+# Create a PangoCairo context
+cairo_context = pangocairo.CairoContext(cairo_context)
+
+# The pango layout is created from the Cairo context
+pango_layout = cairo_context.create_layout()
+
+# You still use pango to set up font descriptions.
+fd = pango.FontDescription('Sans')
+fd.set_size(12 * pango.SCALE)
+
+# Tell your pango layout about your font description
+pango_layout.set_font_description(fd)
+
+# Write text to your pango layout
+pango_layout.set_text('Hello world', -1)
+
+# Position it within the Cairo context
+cairo_context.save()
+cairo_context.translate(x, y)
+cairo_context.rotate(pi / 3)  # You can rotate text and images in Cairo
+cairo_context.set_source_rgb(1, 0, 0)
+
+# Finally, draw the text
+cairo_context.update_layout(pango_layout)
+cairo_context.show_layout(pango_layout)
+cairo_context.restore()
+</code></pre>
+<p>To draw a bitmap...</p>
+<pre><code class="language-python"># Again, from the xlib_surface...
+cairo_context = cairo.Context(xlib_surface)
+
+Gdk.cairo_set_source_pixbuf(cairo_context, pixbuf, x, y)
+cairo_context.rectangle(x, y, w, h)
+cairo_context.fill()
+</code></pre>
+<p>To read a pixel from the xlib surface...</p>
+<pre><code class="language-python"># create a new 1x1 cairo surface
+cairo_surface = cairo.ImageSurface(cairo.FORMAT_RGB24, 1, 1);
+cairo_context = cairo.Context(cairo_surface)
+# translate xlib_surface so that target pixel is at 0, 0
+cairo_context.set_source_surface(xlib_surface, -x, -y)
+cairo_context.rectangle(0,0,1,1)
+cairo_context.set_operator(cairo.OPERATOR_SOURCE)
+cairo_context.fill()
+cairo_surface.flush() # ensure all writing is done
+# Read the pixel
+return (ord(pixels[2]), ord(pixels[1]), ord(pixels[0]), 0)
+</code></pre>
+<h3 id="port-from-cairo-in-gtk-2-to-cairo-in-gtk-3" tabindex="-1">Port from Cairo in GTK 2 to Cairo in GTK 3</h3>
+<p>The Cairo/Pango interaction is a little different:</p>
+<pre><code class="language-python">from gi.repository import Pango, PangoCairo
+cairo_context = ...
+pango_layout = PangoCairo.create_layout(cairo_context)
+fd = Pango.FontDescription('Sans')
+fd.set_size(12 * Pango.SCALE)
+pango_layout.set_font_description(fd)
+pango_layout.set_text('Hello World', -1)
+cairo_context.set_source_rgb(1, 0, 0)
+PangoCairo.update_layout(cairo_context, pango_layout)
+PangoCairo.show_layout(cairo_context, pango_layout)
+</code></pre>
+<p>The <code>get_extents()</code> method if different in PangoCairo. It calculates an<br>
+extent as a Rectangle, but doesn't return anything. There is a method,<br>
+<code>get_logical_extents()</code> that returns a Rectangle. Alas, it is not<br>
+necessarily available after v1.16. Note that Rectangle is not a list but<br>
+a class with methods for <code>get_x()</code>, <code>get_y()</code>, <code>get_width()</code>, and<br>
+<code>get_height()</code>, so you cannot iter over it.</p>
+<p>(For more details, see<br>
+<a href="http://developer.gnome.org/pangomm/2.28/annotated.html" target="_blank" class="external-link">http://developer.gnome.org/pangomm/2.28/annotated.html</a>)</p>
+<h4 id="replacing-pixmaps-with-cairo" tabindex="-1">Replacing pixmaps with Cairo</h4>
+<p>You need to replace your pixmaps with Cairo in GTK 3.</p>
+<pre><code class="language-python">win = gtk.gdk.get_default_root_window()
+gc = gtk.gdk.GC(win)
+pix = gtk.gdk.pixbuf_new_from_file(&quot;filename.png&quot;)
+map = gtk.gdk.Pixmap(win, pix.get_width(), pix.get_height())
+map.draw_rectangle(gc, True, 0, 0, pix.get_width(), pix.get_height())
+map.draw_pixbuf(gc, pix, 0, 0, 0, 0, pix.get_width(), pix.get_height(), gtk.gdk.RGB_DITHER_NONE)
+</code></pre>
+<p>Becomes;</p>
+<pre><code class="language-python">pix = GdkPixbuf.Pixbuf.new_from_file(&quot;filename.png&quot;)
+imagesurface = cairo.ImageSurface(
+    cairo.Format.ARGB32,
+    pix.get_width(),
+    pix.get_height())
+context = cairo.Context(imagesurface)
+context.rectangle(0, 0, pix.get_width(), pix.get_height())
+Gdk.cairo_set_source_pixbuf(pix)
+context.fill()
+</code></pre>
+<h3 id="taking-a-screenshot-and-making-a-thumbnail" tabindex="-1">Taking a screenshot and making a thumbnail</h3>
+<p>To make a screenshot of the window:</p>
+<pre><code class="language-python">width, height = window.get_width(), window.get_height()
+thumb_surface = Gdk.Window.create_similar_surface(window,
+                                                    cairo.CONTENT_COLOR,
+                                                    width, height)
+
+thumb_width, thumb_height = style.zoom(100), style.zoom(80)
+cairo_context = cairo.Context(thumb_surface)
+thumb_scale_w = thumb_width * 1.0 / width
+thumb_scale_h = thumb_height * 1.0 / height
+cairo_context.scale(thumb_scale_w, thumb_scale_h)
+Gdk.cairo_set_source_window(cairo_context, window, 0, 0)
+cairo_context.paint()
+thumb_surface.write_to_png(png_path_or_filelike_object)
+</code></pre>
+<h3 id="creating-a-video-widget" tabindex="-1">Creating a video widget</h3>
+<p>Some necessary changes include:</p>
+<p>Using</p>
+<pre><code class="language-python">get_property('window').get_xid()
+</code></pre>
+<p>Instead of</p>
+<pre><code class="language-python">window.xid
+</code></pre>
+<p>Using</p>
+<pre><code class="language-python">set_double_buffered(False)
+set_app_paintable(True)
+</code></pre>
+<p>Instead of</p>
+<pre><code class="language-python">unset_flags(gtk.DOUBLE_BUFFERED)
+set_flags(gtk.APP_PAINTABLE)
+</code></pre>
+<h2 id="hacks-to-help-in-porting" tabindex="-1">Hacks to help in porting</h2>
+<h3 id="use-a-virtual-machine" tabindex="-1">Use a virtual machine</h3>
+<p>Use an editor with remote file access to a virtual machine, such as emacs with tramp.</p>
+<p>Start Terminal inside Sugar and then start Screen. Change to the activity source directory. Use an SSH client to reach into the Terminal shell to run <code>sugar-activity</code>.</p>
+<h3 id="use-an-iterative-restarter" tabindex="-1">Use an iterative restarter</h3>
+<p>Temporarily add code to detect when your editor rewrites files. For example in <code>activity.Activity.__init__</code>;</p>
+<pre><code># testing restarter
+ct = os.stat('file.py').st_ctime
+def restarter():
+    if os.stat('file.py').st_ctime != ct:
+        self.close()
+        return False
+    return True
+GObject.timeout_add(233, restarter)
+</code></pre>
+<h3 id="use-extended-python-debugger" tabindex="-1">Use Extended Python debugger</h3>
+<p><code>epdb</code> library is useful to inspect the code while the Activity is running.</p>
+<pre><code>sudo yum install python-epdb
+</code></pre>
+<p>You can put trace point in the code to stop and make tests by doing this:</p>
+<pre><code>import epdb;epdb.set_trace()
+</code></pre>
+<p>Finally I run Get Books Activity from the Terminal Activity to be able<br>
+to write some code on a shell. This is the command that I use:</p>
+<pre><code>sugar-launch org.laptop.sugar.GetBooksActivity
+</code></pre>
+<p>See also: <a href="https://wiki.sugarlabs.org/go/Development_Team/Debugging" target="_blank" class="external-link">Development Team/Debugging</a></p>
+<h3 id="check-logs-with-multitail" tabindex="-1">Check logs with multitail</h3>
+<p>multitail is really helpful for developing Sugar Activities. It can be used to read the latest log that an Activity wrote and see how it's growing.</p>
+<p>For example, if we run an Activity three times it will create 3 different .log files behind ~/.sugar/default/logs directory. With multitail we will be seeing the most recent version of the activity log.</p>
+<p>Install multitail using:</p>
+<pre><code class="language-shell">sudo yum install multitail
+</code></pre>
+<p>Show the proper log files</p>
+<pre><code class="language-shell">cd ~/.sugar/default/logs
+multitail -iw &quot;*&lt;Activity Name&gt;*&quot; 1 -m 0
+</code></pre>
+<p>-iw is to inform to multitail about the input files and check for them every 1 second<br>
+-m is to let multitail know about the buffersize (0 is infinite)</p>
+<h3 id="use-the-pygobject-code-as-example" tabindex="-1">Use the pygobject code as example</h3>
+<p><a href="https://live.gnome.org/PyGObject" target="_blank" class="external-link">pygobject</a> is what we use to make<br>
+GTK 3 activities. So, it's really useful to take a look at the code<br>
+examples that are there. Even more, you can run some demo application<br>
+that show how to use something specific about the library.</p>
+<ul>
+<li>Clone the code:<pre><code>git clone git://git.gnome.org/pygobject
+</code></pre>
+</li>
+<li>Run an example<pre><code class="language-shell">cd pygobject
+cd demos/gtk-demo/demos
+python pixbuf.py
+</code></pre>
+</li>
+<li>Grep the code to search for something useful<pre><code class="language-shell">cd pygobject
+git grep GdkPixbuf
+</code></pre>
+</li>
+</ul>
+<h3 id="monitoring-d-bus" tabindex="-1">Monitoring DBus</h3>
+<p>Not sure how this command works, but it can give us an interesting<br>
+information. If you run this command and plug an USB drive you will see<br>
+useful information</p>
+<pre><code class="language-shell">dbus-monitor --system
+</code></pre>
+<h2 id="port-to-python-3" tabindex="-1">Port to Python 3</h2>
+<p>We are migrating towards Python 3. Python 3 does not support GTK 2.<br>
+Hence, once the activity is ported to GTK 3, please consider porting<br>
+the activity from Python 2 to Python 3.</p>
+<p>Ref: <a href="src/python-porting-guide" target="_blank" class="external-link">Guide to port activities to Python<br>
+3</a></p>
+<h2 id="releasing-activities-for-maintainers" tabindex="-1">Releasing Activities (For maintainers)</h2>
+<p>Once an activity is ported, a new release can be made. The major version<br>
+should be greater than the existing one.</p>
+<p>Please follow<br>
+<a href="contributing.md#checklist---maintainer" target="_blank" class="external-link">this</a><br>
+guide for releasing a new version</p>
+<h2 id="notes" tabindex="-1">Notes</h2>
+<p>These are the changes noted by developers while porting activities</p>
+<ul>
+<li>
+<p><code>Gtk.Widget.hide_all()</code> does not exist anymore. We should use just <code>.hide</code> <a href="http://developer.gnome.org/gtk3/3.5/GtkWidget.html#gtk-widget-hide" target="_blank" class="external-link">Ref</a></p>
+</li>
+<li>
+<p>If the code creates some own object, and it defines some properties,<br>
+you should use <code>__gproperties__</code> dictionary. <a href="http://python-gtk-3-tutorial.readthedocs.org/en/latest/objects.html#GObject.GObject.__gproperties__" target="_blank" class="external-link">Ref</a></p>
+</li>
+<li>
+<p><code>Gtk.ListStore</code> doesn't have the method <code>.reorder</code>. There is a<br>
+<a href="https://bugzilla.gnome.org/show_bug.cgi?id=677941" target="_blank" class="external-link">ticket</a> reported<br>
+upstream about this.</p>
+</li>
+<li>
+<p>I replaced the use of <code>dbus</code> by <a href="http://developer.gnome.org/gio/unstable/pt02.html" target="_blank" class="external-link">Gio</a> to monitor (dis)connection of pen drives</p>
+</li>
+<li>
+<p>Migrate custom signals:<br>
+If you have defined custom gtk objects with custom signal you need to update them to <a href="http://python-gtk-3-tutorial.readthedocs.org/en/latest/objects.html" target="_blank" class="external-link">the new way</a><br>
+You should replace this:</p>
+<pre><code class="language-python">from gobject import signal_new, TYPE_INT, TYPE_STRING, TYPE_BOOLEAN, TYPE_PYOBJECT, TYPE_NONESIGNAL_RUN_LAST,     signal_new('extlistview-modified', gtk.TreeView,
+SIGNAL_RUN_LAST, TYPE_NONE, ())
+</code></pre>
+<p>by adding the signal definition inside the object that you are creating using the <code>__gsignals__</code> dictionary like this (in this case Gtk.TreeView<br>
+is the class that our object inherits):</p>
+<pre><code class="language-python">from gi.repository
+import GObject
+class ExtListView(Gtk.TreeView):
+__gsignals__ = { 'extlistview-modified': (GObject.SignalFlags.RUN_LAST, None, ()), }
+</code></pre>
+<p>The last argument of the signal definition are the<br>
+argument types that the callback will receive.</p>
+</li>
+<li>
+<p>Change the mouse cursor</p>
+<ul>
+<li>
+<p>Example use case:<br>
+When the activity is working and we want to show a work in progress cursor.</p>
+</li>
+<li>
+<p>Replace this:</p>
+<pre><code class="language-python">self.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+</code></pre>
+<p>with:</p>
+<pre><code class="language-python">from gi.repository import Gdk
+self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="resources" tabindex="-1">Resources</h2>
+<ul>
+<li>Python GTK 3 Tutorial: <a href="http://python-gtk-3-tutorial.readthedocs.org/" target="_blank" class="external-link"><a href="http://python-gtk-3-tutorial.readthedocs.org" target="_blank" class="external-link">http://python-gtk-3-tutorial.readthedocs.org</a></a></li>
+<li>PyGTK or GTK 2: <a href="http://www.pygtk.org/docs/pygtk/" target="_blank" class="external-link">http://www.pygtk.org/docs/pygtk/</a></li>
+<li>Sugar Toolkit GTK 3 Documentation:<br>
+<a href="https://developer.sugarlabs.org/sugar3/" target="_blank" class="external-link">https://developer.sugarlabs.org/sugar3/</a></li>
+<li>GTK 3 Reference Manual <a href="http://developer.gnome.org/gtk3/stable/" target="_blank" class="external-link">http://developer.gnome.org/gtk3/stable/</a></li>
+<li>OLPC Documentation:<br>
+<a href="http://wiki.laptop.org/go/Activities/PortingToGtk3" target="_blank" class="external-link">http://wiki.laptop.org/go/Activities/PortingToGtk3</a></li>
+<li>Pango documentation: <a href="http://developer.gnome.org/pangomm" target="_blank" class="external-link">http://developer.gnome.org/pangomm</a></li>
+<li>GStreamer-1.0 documentation:<br>
+<a href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/index.html" target="_blank" class="external-link">http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/index.html</a></li>
+<li>GStreamer-1.0 porting hints:<br>
+<a href="https://wiki.ubuntu.com/Novacut/GStreamer1.0" target="_blank" class="external-link">https://wiki.ubuntu.com/Novacut/GStreamer1.0</a></li>
+</ul>
+<h2 id="porting-examples" tabindex="-1">Porting examples</h2>
+<ul>
+<li><a href="https://github.com/sugarlabs/biorhythm/commit/c16de3b70cce2cc6f8af933e2b062c844a47c144/" target="_blank" class="external-link">Biorhythm (GTK 3 and PangoCairo)</a></li>
+<li><a href="https://github.com/sugarlabs/peru-learns-english-activity/commit/caa2cde526b3823a5a1f7d200a76ad5bc3502b0e" target="_blank" class="external-link">Peru Learns English (GTK 3 and GStreamer 1.0)</a></li>
+<li><a href="https://github.com/sugarlabs/jump/commit/b75410d2879d9829df942726f5465b7cf5a9d98d" target="_blank" class="external-link">Jump (GTK 3 and Sugargame)</a></li>
+<li><a href="https://github.com/sugarlabs/iknowMadagascar/commit/5de78baca2daebe483bcc35912d254c77f2416f4" target="_blank" class="external-link">I know Madagascar (GTK 3 and Sugargame)</a></li>
+</ul>
+</main>
+<aside>
+<div class="sidebar">
+<div class="sidebar-container">
+<script>async function fetchGraphData(){const e=await fetch("/graph.json").then((e=>e.json()));return{graphData:e,fullGraphData:filterFullGraphData(e)}}function getNextLevelNeighbours(e,t){const n=Object.values(e).map((e=>e.neighbors)).flat();return Object.keys(t).reduce(((r,l)=>(-1!=n.indexOf(l)?t[l].hide||(e[l]=t[l]):r[l]=t[l],r)),{})}function filterLocalGraphData(e,t){if(null==e)return null;let n=JSON.parse(JSON.stringify(e.nodes)),r=JSON.parse(JSON.stringify(e.links)),l=n[decodeURI(window.location.pathname)]||Object.values(n).find((e=>e.home));if(delete n[l.url],!l.home){delete n[Object.values(n).find((e=>e.home)).url]}l.current=!0;let i={};i[l.url]=l;for(let e=0;e<t;e++)n=getNextLevelNeighbours(i,n);nodes=Object.values(i),l.home||(nodes=nodes.filter((e=>!e.home)));let o=nodes.map((e=>e.id));return{nodes:nodes,links:r.filter((function(e){return o.indexOf(e.target)>-1&&o.indexOf(e.source)>-1}))}}function getCssVar(e){return getComputedStyle(document.body).getPropertyValue(e)}function htmlDecode(e){return(new DOMParser).parseFromString(e,"text/html").documentElement.textContent}function renderGraph(e,t,n,r){if(null==e)return;const l=document.getElementById(t);width=l.offsetWidth,height=l.offsetHeight;const i=new Set;let o=null;const a=getCssVar("--graph-main"),s=getCssVar("--graph-muted");let u=ForceGraph()(l).graphData(e).nodeId("id").nodeLabel("title").linkSource("source").linkTarget("target").d3AlphaDecay(.1).width(width).height(height).linkDirectionalArrowLength(2).linkDirectionalArrowRelPos(.5).autoPauseRedraw(!1).linkColor((e=>null==o||e.source.id==o.id||e.target.id==o.id?a:s)).nodeCanvasObject(((e,t)=>{const n=e.neighbors&&e.neighbors.length||2,r=Math.min(7,Math.max(n/2,2));t.beginPath(),t.arc(e.x,e.y,r,0,2*Math.PI,!1),null==o||e==o||i.has(e.url)?t.fillStyle=a:t.fillStyle=s,t.fill(),e.current&&(t.beginPath(),t.arc(e.x,e.y,r+1,0,2*Math.PI,!1),t.lineWidth=.5,t.strokeStyle=a,t.stroke());const l=htmlDecode(e.title);t.font="3.5px Sans-Serif",t.textAlign="center",t.textBaseline="top",t.fillText(l,e.x,e.y+r+2)})).onNodeClick((e=>{window.location=e.url})).onNodeHover((e=>{i.clear(),e&&(i.add(e),e.neighbors.forEach((e=>i.add(e)))),o=e||null}));return(r||null!=n&&e.nodes.length>4)&&setTimeout((()=>{u.zoomToFit(5,75)}),n||200),u}function renderLocalGraph(e,t,n){window.graph&&window.graph._destructor();return renderGraph(filterLocalGraphData(e,t),"link-graph",null,n)}function filterFullGraphData(e){if(null==e)return null;e=JSON.parse(JSON.stringify(e));const t=Object.values(e.nodes).filter((e=>e.hide)).map((e=>e.id));return{links:JSON.parse(JSON.stringify(e.links)).filter((e=>-1==t.indexOf(e.source)&&-1==t.indexOf(e.target))),nodes:[...Object.values(e.nodes).filter((e=>!e.hide))]}}function openFullGraph(e){return lucide.createIcons({attrs:{class:["svg-icon"]}}),renderGraph(e,"full-graph-container",200,!1)}function closefullGraph(e){return e&&e._destructor(),null}</script>
+<div x-init="{graphData, fullGraphData} = await fetchGraphData();" x-data="{ graphData: null, depth: 1, graph: null, fullGraph: null, showFullGraph: false, fullScreen: false, fullGraphData: null}" id="graph-component" x-bind:class="fullScreen ? 'graph graph-fs' : 'graph'" v-scope>
+<div class="graph-title-container">
+<div class="graph-title">Connected Pages</div>
+<div id="graph-controls">
+<div class="depth-control">
+<label for="graph-depth">Depth</label>
+<div class="slider">
+<input x-model.number="depth" name="graph-depth" list="depthmarkers" type="range" step="1" min="1" max="3" id="graph-depth">
+<datalist id="depthmarkers">
+<option value="1" label="1"></option>
+<option value="2" label="2"></option>
+<option value="3" label="3"></option>
+</datalist>
+</div>
+<span id="depth-display" x-text="depth"></span>
+</div>
+<div class="ctrl-right">
+<span id="global-graph-btn" x-on:click="showFullGraph = true; setTimeout(() => {fullGraph = openFullGraph(fullGraphData)}, 100)"><i icon-name="globe" aria-hidden="true"></i></span>
+<span id="graph-fs-btn" x-on:click="fullScreen = !fullScreen"><i icon-name="expand" aria-hidden="true"></i></span>
+</div>
+</div>
+</div>
+<div x-effect="window.graph = renderLocalGraph(graphData, depth, fullScreen)" id="link-graph"></div>
+<div x-show="showFullGraph" id="full-graph" class="show" style="display:none">
+<span id="full-graph-close" x-on:click="fullGraph = closefullGraph(fullGraph); showFullGraph = false;"><i icon-name="x" aria-hidden="true"></i></span><div id="full-graph-container"></div>
+</div>
+</div>
+<div class="toc">
+<div class="toc-title-container">
+<div class="toc-title">
+On this page
+</div>
+</div>
+<div class="toc-container">
+<nav class="toc">
+<ol>
+<li><a href="#gtk-3-porting-guide">GTK 3 Porting Guide</a>
+<ol>
+<li><a href="#gtk">GTK</a>
+</li>
+<li><a href="#sugar-toolkit">Sugar Toolkit</a>
+</li>
+<li><a href="#sugar-activities">Sugar Activities</a>
+</li>
+<li><a href="#required-skills">Required Skills</a>
+</li>
+<li><a href="#how-to-port-to-gtk-3">How to Port to GTK 3</a>
+</li>
+<li><a href="#how-to-port-a-sugar-activity-to-gtk-3">How to Port a Sugar Activity to GTK 3</a>
+</li>
+<li><a href="#port-to-sugar-toolkit-for-gtk-3">Port to Sugar Toolkit for GTK 3</a>
+</li>
+<li><a href="#port-to-gtk-3">Port to GTK 3</a>
+</li>
+<li><a href="#problems">Problems</a>
+<ol>
+<li><a href="#simple-example-on-creating-a-toolbar">Simple example on creating a toolbar</a>
+</li>
+<li><a href="#tools">Tools</a>
+</li>
+<li><a href="#constructor-considerations">Constructor considerations</a>
+</li>
+<li><a href="#h-box-v-box-pack-start-and-pack-end">HBox, VBox, pack_start and pack_end</a>
+</li>
+<li><a href="#gtk-alignment-considerations">GtkAlignment considerations</a>
+</li>
+<li><a href="#gtk-menu-popup">Gtk Menu Popup</a>
+</li>
+<li><a href="#gdk">Gdk</a>
+</li>
+<li><a href="#pango">Pango</a>
+</li>
+<li><a href="#gio-settings-from-g-conf">Gio.Settings from GConf</a>
+</li>
+<li><a href="#other-considerations">Other considerations</a>
+</li>
+<li><a href="#constants">Constants</a>
+</li>
+<li><a href="#pixbufs">Pixbufs</a>
+</li>
+<li><a href="#changes-to-the-clipboard">Changes to the Clipboard</a>
+</li>
+<li><a href="#changes-to-drag-and-drop">Changes to Drag-and-Drop</a>
+</li>
+<li><a href="#port-from-drawable-to-cairo">Port from Drawable to Cairo</a>
+</li>
+<li><a href="#port-from-cairo-in-gtk-2-to-cairo-in-gtk-3">Port from Cairo in GTK 2 to Cairo in GTK 3</a>
+<ol>
+<li><a href="#replacing-pixmaps-with-cairo">Replacing pixmaps with Cairo</a>
+</li>
+</ol>
+</li>
+<li><a href="#taking-a-screenshot-and-making-a-thumbnail">Taking a screenshot and making a thumbnail</a>
+</li>
+<li><a href="#creating-a-video-widget">Creating a video widget</a>
+</li>
+</ol>
+</li>
+<li><a href="#hacks-to-help-in-porting">Hacks to help in porting</a>
+<ol>
+<li><a href="#use-a-virtual-machine">Use a virtual machine</a>
+</li>
+<li><a href="#use-an-iterative-restarter">Use an iterative restarter</a>
+</li>
+<li><a href="#use-extended-python-debugger">Use Extended Python debugger</a>
+</li>
+<li><a href="#check-logs-with-multitail">Check logs with multitail</a>
+</li>
+<li><a href="#use-the-pygobject-code-as-example">Use the pygobject code as example</a>
+</li>
+<li><a href="#monitoring-d-bus">Monitoring DBus</a>
+</li>
+</ol>
+</li>
+<li><a href="#port-to-python-3">Port to Python 3</a>
+</li>
+<li><a href="#releasing-activities-for-maintainers">Releasing Activities (For maintainers)</a>
+</li>
+<li><a href="#notes">Notes</a>
+</li>
+<li><a href="#resources">Resources</a>
+</li>
+<li><a href="#porting-examples">Porting examples</a>
+</li>
+</ol>
+</li>
+</ol>
+</nav>
+</div>
+</div>
+<div class="backlinks">
+<div class="backlink-title" style="margin:4px 0!important">Pages mentioning this page</div>
+<div class="backlink-list"><div class="backlink-card"><i icon-name="link"></i><a href="/" data-note-icon="" class="backlink">README</a>
+</div></div>
+</div>
+</div>
+</div>
+</aside>
+<style>#tooltip-wrapper{background:var(--background-primary);padding:1em;border-radius:4px;overflow:hidden;position:fixed;width:80%;max-width:400px;height:auto;max-height:300px;font-size:.8em;box-shadow:0 5px 10px rgba(0,0,0,.1);opacity:0;transition:opacity .1s;unicode-bidi:plaintext;overflow-y:scroll;z-index:10}#tooltip-wrapper:after{content:"";position:absolute;z-index:1;bottom:0;left:0;pointer-events:none;width:100%;unicode-bidi:plaintext;height:75px}</style>
+<div style="opacity:0;display:none" id="tooltip-wrapper">
+<div id="tooltip-content">
+</div>
+</div>
+<iframe style="display:none;height:0;width:0" id="link-preview-iframe" src="">
+</iframe>
+<script>var opacityTimeout,contentTimeout,transitionDurationMs=100,iframe=document.getElementById("link-preview-iframe"),tooltipWrapper=document.getElementById("tooltip-wrapper"),tooltipContent=document.getElementById("tooltip-content"),linkHistories={};function hideTooltip(){opacityTimeout=setTimeout((function(){tooltipWrapper.style.opacity=0,contentTimeout=setTimeout((function(){tooltipContent.innerHTML="",tooltipWrapper.style.display="none"}),transitionDurationMs+1)}),transitionDurationMs)}function showTooltip(t){var e=t.target,o=e.getClientRects()[e.getClientRects().length-1],i=window.pageYOffset||document.documentElement.scrollTop,n=t.target.getAttribute("href");if(-1===n.indexOf("http")||-1!==n.indexOf(window.location.host)){let t=n.split("#")[0];linkHistories[t]?(tooltipContent.innerHTML=linkHistories[t],tooltipWrapper.style.display="block",setTimeout((function(){if(tooltipWrapper.style.opacity=1,-1!=n.indexOf("#")){let t=n.split("#")[1];const e=tooltipWrapper.querySelector(`[id='${t}']`);e.classList.add("referred"),e.scrollIntoView({behavior:"smooth"},!0)}else tooltipWrapper.scroll(0,0)}),1)):(iframe.src=t,iframe.onload=function(){tooltipContentHtml="",tooltipContentHtml+='<div style="font-weight: bold; unicode-bidi: plaintext;">'+iframe.contentWindow.document.querySelector("h1").innerHTML+"</div>",tooltipContentHtml+=iframe.contentWindow.document.querySelector(".content").innerHTML,tooltipContent.innerHTML=tooltipContentHtml,linkHistories[t]=tooltipContentHtml,tooltipWrapper.style.display="block",tooltipWrapper.scrollTop=0,setTimeout((function(){if(tooltipWrapper.style.opacity=1,-1!=n.indexOf("#")){let t=n.split("#")[1];const e=tooltipWrapper.querySelector(`[id='${t}']`);e.classList.add("referred"),console.log(e),e.scrollIntoView({behavior:"smooth"},!0)}else tooltipWrapper.scroll(0,0)}),1)}),tooltipWrapper.style.left=o.left-tooltipWrapper.offsetWidth/2+o.width/2+"px",window.innerHeight-o.top<tooltipWrapper.offsetHeight?tooltipWrapper.style.top=o.top+i-tooltipWrapper.offsetHeight-10+"px":window.innerHeight-o.top>tooltipWrapper.offsetHeight&&(tooltipWrapper.style.top=o.top+i+35+"px"),o.left+o.width/2<tooltipWrapper.offsetWidth/2?tooltipWrapper.style.left="10px":document.body.clientWidth-o.left-o.width/2<tooltipWrapper.offsetWidth/2&&(tooltipWrapper.style.left=document.body.clientWidth-tooltipWrapper.offsetWidth-20+"px")}}function setupListeners(t){t.addEventListener("mouseleave",(function(t){hideTooltip()})),tooltipWrapper.addEventListener("mouseleave",(function(t){hideTooltip()})),t.addEventListener("mouseenter",(function(t){clearTimeout(opacityTimeout),clearTimeout(contentTimeout),showTooltip(t)})),tooltipWrapper.addEventListener("mouseenter",(function(t){clearTimeout(opacityTimeout),clearTimeout(contentTimeout)}))}window.addEventListener("load",(function(t){document.querySelectorAll(".internal-link").forEach(setupListeners),document.querySelectorAll(".backlink-card a").forEach(setupListeners)}))</script>
+<script>window.location.hash&&document.getElementById(window.location.hash.slice(1)).classList.add("referred"),window.addEventListener("hashchange",(e=>{const t=e.oldURL.split("#");t[1]&&document.getElementById(t[1]).classList.remove("referred");const n=e.newURL.split("#");n[1]&&document.getElementById(n[1]).classList.add("referred")}),!1);const url_parts=window.location.href.split("#"),url=url_parts[0],referrence=url_parts[1];document.querySelectorAll(".cm-s-obsidian > *[id]").forEach((function(e){e.ondblclick=function(e){const t=url+"#"+e.target.id;navigator.clipboard.writeText(t)}}))</script>
+<script src="https://fastly.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js"></script>
+<script defer="defer">TIMESTAMP_FORMAT="MMM dd, yyyy h:mm a",document.querySelectorAll(".human-date").forEach((function(e){date=e.getAttribute("data-date")||e.innerText,parsed_date=luxon.DateTime.fromISO(date),null!=parsed_date.invalid&&(parsed_date=luxon.DateTime.fromSQL(date)),null!=parsed_date.invalid&&(parsed_date=luxon.DateTime.fromHTML(date)),e.innerHTML=parsed_date.toFormat(TIMESTAMP_FORMAT)}))</script>
+<aside id="floating-control">
+<span id="theme-switch">
+<i class="svg-icon light" icon-name="sun" aria-hidden="true"></i>
+<i class="svg-icon dark" icon-name="moon" aria-hidden="true"></i>
+</span>
+</aside>
+<script>function setThemeIcon(e){"dark"===e?(document.getElementById("theme-switch").classList.add("dark"),document.getElementById("theme-switch").classList.remove("light")):(document.getElementById("theme-switch").classList.add("light"),document.getElementById("theme-switch").classList.remove("dark"))}function setTheme(e,t){t&&setThemeIcon(e),"dark"==e?(document.body.classList.remove("theme-light"),document.body.classList.add("theme-dark")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark"))}let theme=window.localStorage.getItem("site-theme")||"light";"auto"===theme&&(theme="light"),setTheme(theme,!0),window.theme=theme,window.localStorage.setItem("site-theme",theme),document.getElementById("theme-switch").addEventListener("click",(function(){let e="dark"===window.theme?"light":"dark";setTheme(e,!0),window.localStorage.setItem("site-theme",e),window.theme=e}))</script>
+<style>#floating-control{position:fixed;bottom:1.5rem;right:1.5rem;z-index:100}#theme-switch{cursor:pointer;background:var(--background-secondary);border-radius:50%;width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,.1)}#theme-switch i{font-size:1.2rem}#theme-switch.dark .light,#theme-switch.light .dark{display:none}</style>
+<script>lucide.createIcons({attrs:{class:["svg-icon"]}})</script>
+</body>
+</html>
