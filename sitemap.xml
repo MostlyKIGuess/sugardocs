@@ -2,133 +2,133 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
         <url>
-            <loc>https://sugardocs.vercel.app//404/</loc>
-            <lastmod>2025-02-27T13:14:42.111Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/404/</loc>
+            <lastmod>2025-03-04T14:47:17.087Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/</loc>
+            <lastmod>2025-03-04T14:47:17.132Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//index/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/index/</loc>
+            <lastmod>2025-03-04T14:47:17.132Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/android/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/android/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/code-of-conduct/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/code-of-conduct/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/contact/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/contact/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/contributing/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/contributing/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/desktop-activity/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/desktop-activity/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/dev-environment/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/dev-environment/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/docs/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/docs/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/gtk3-porting-guide/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/gtk3-porting-guide/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/hig/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/hig/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/how-can-i-help/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/how-can-i-help/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/javascript-style/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/javascript-style/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/languages/</loc>
-            <lastmod>2025-02-27T13:14:42.157Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/languages/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/memory-leaks/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/memory-leaks/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/python-coverage-guide/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/python-coverage-guide/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/python-porting-guide/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/python-porting-guide/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/python-style/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/python-style/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/sugar-iconify/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/sugar-iconify/</loc>
+            <lastmod>2025-03-04T14:47:17.133Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/sugar-logging-in/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/sugar-logging-in/</loc>
+            <lastmod>2025-03-04T14:47:17.134Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/sugar-on-debian/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/sugar-on-debian/</loc>
+            <lastmod>2025-03-04T14:47:17.134Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/web-activity/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/web-activity/</loc>
+            <lastmod>2025-03-04T14:47:17.134Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/web-architecture/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/web-architecture/</loc>
+            <lastmod>2025-03-04T14:47:17.134Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/web-style/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/web-style/</loc>
+            <lastmod>2025-03-04T14:47:17.134Z</lastmod>
         </url>
     
         <url>
-            <loc>https://sugardocs.vercel.app//src/what-can-i-do/</loc>
-            <lastmod>2025-02-27T13:14:42.158Z</lastmod>
+            <loc>https://sugardocs.vercel.app//sugardocs/src/what-can-i-do/</loc>
+            <lastmod>2025-03-04T14:47:17.134Z</lastmod>
         </url>
     
 </urlset>

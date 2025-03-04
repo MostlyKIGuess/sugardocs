@@ -3,29 +3,29 @@
     <title>Sugar-Docs</title>
     <link href="https://sugardocs.vercel.app//feed.xml" rel="self" />
     <link href="https://sugardocs.vercel.app/" />
-    <updated>2025-02-27T13:14:55Z</updated>
+    <updated>2025-03-04T14:47:26Z</updated>
     <id>https://sugardocs.vercel.app/</id>
         <entry>
             <title>
                 what-can-i-do
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/what-can-i-do/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/what-can-i-do/</id>
             <content type="html">
                 &lt;h1 id=&quot;page-moved&quot; tabindex=&quot;-1&quot;&gt;Page Moved&lt;/h1&gt;
 &lt;p&gt;Sorry, we moved this page to &lt;a href=&quot;https://sugardocs.vercel.app/src/how-can-i-help&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;How can I help?&lt;/a&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/what-can-i-do/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/what-can-i-do/" />
         </entry>
         <entry>
             <title>
                 web-style
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/web-style/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/web-style/</id>
             <content type="html">
                 &lt;h1 id=&quot;code-style-for-sugar-html-development&quot; tabindex=&quot;-1&quot;&gt;Code style for Sugar HTML development&lt;/h1&gt;
 &lt;h2 id=&quot;general&quot; tabindex=&quot;-1&quot;&gt;General&lt;/h2&gt;
@@ -76,15 +76,15 @@ The recess command is provided by sugar-build.&lt;/p&gt;
 If a test doesn&#39;t pass either your code needs to be fixed or the test need to be adapted.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/web-style/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/web-style/" />
         </entry>
         <entry>
             <title>
                 web-architecture
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/web-architecture/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/web-architecture/</id>
             <content type="html">
                 &lt;h1 id=&quot;sugar-web-architecture&quot; tabindex=&quot;-1&quot;&gt;Sugar web architecture&lt;/h1&gt;
 &lt;h2 id=&quot;web-activities&quot; tabindex=&quot;-1&quot;&gt;Web Activities&lt;/h2&gt;
@@ -170,15 +170,15 @@ handled with &lt;a href=&quot;https://volojs.github.io/&quot; target=&quot;_blan
 &lt;a href=&quot;http://nodejs.org/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Node.js&lt;/a&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/web-architecture/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/web-architecture/" />
         </entry>
         <entry>
             <title>
                 web-activity
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/web-activity/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/web-activity/</id>
             <content type="html">
                 &lt;h1 id=&quot;write-your-own-sugar-web-activity&quot; tabindex=&quot;-1&quot;&gt;Write your own Sugar web activity&lt;/h1&gt;
 &lt;h3 id=&quot;choose-your-development-environment&quot; tabindex=&quot;-1&quot;&gt;Choose your development environment&lt;/h3&gt;
@@ -394,15 +394,15 @@ Activity Library &lt;a href=&quot;http://activities.sugarlabs.org/&quot; target=
 &lt;code&gt;activity/activity.info&lt;/code&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/web-activity/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/web-activity/" />
         </entry>
         <entry>
             <title>
                 sugar-on-debian
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/sugar-on-debian/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/sugar-on-debian/</id>
             <content type="html">
                 &lt;h1 id=&quot;tutorial-on-installing-sugar-on-debian&quot; tabindex=&quot;-1&quot;&gt;Tutorial on installing Sugar on Debian&lt;/h1&gt;
 &lt;h2 id=&quot;get-debian&quot; tabindex=&quot;-1&quot;&gt;Get Debian&lt;/h2&gt;
@@ -473,15 +473,15 @@ cs_re_s:blue:([0-9]{10,}&#92;.[0-9]{6,})
 &lt;/blockquote&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/sugar-on-debian/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/sugar-on-debian/" />
         </entry>
         <entry>
             <title>
                 sugar-logging-in
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/sugar-logging-in/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/sugar-logging-in/</id>
             <content type="html">
                 &lt;h1 id=&quot;guide-to-logging-in-with-the-sugar-desktop&quot; tabindex=&quot;-1&quot;&gt;Guide to logging in with the Sugar desktop&lt;/h1&gt;
 &lt;p&gt;You may have installed Sugar on Debian/Ubuntu, Fedora, any other distribution by following the Sugar documentation or may have installed the Sugar Live Build on a Virtual Machine.&lt;/p&gt;
@@ -536,15 +536,15 @@ lets you switch users or switch desktop environments.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/sddm/sddm&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;https://github.com/sddm/sddm&lt;/a&gt;&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/sugar-logging-in/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/sugar-logging-in/" />
         </entry>
         <entry>
             <title>
                 sugar-iconify
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/sugar-iconify/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/sugar-iconify/</id>
             <content type="html">
                 &lt;h1 id=&quot;sugar-iconify&quot; tabindex=&quot;-1&quot;&gt;Sugar Iconify&lt;/h1&gt;
 &lt;h2 id=&quot;description&quot; tabindex=&quot;-1&quot;&gt;Description&lt;/h2&gt;
@@ -713,15 +713,15 @@ entities, True or False are the only accepted values.&lt;/p&gt;
 &lt;hr /&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/sugar-iconify/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/sugar-iconify/" />
         </entry>
         <entry>
             <title>
                 python-style
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/python-style/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/python-style/</id>
             <content type="html">
                 &lt;h1 id=&quot;code-style-for-sugar-python-development&quot; tabindex=&quot;-1&quot;&gt;Code style for Sugar Python development&lt;/h1&gt;
 &lt;h2 id=&quot;general&quot; tabindex=&quot;-1&quot;&gt;General&lt;/h2&gt;
@@ -755,15 +755,15 @@ entities, True or False are the only accepted values.&lt;/p&gt;
 &lt;/ul&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/python-style/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/python-style/" />
         </entry>
         <entry>
             <title>
                 python-porting-guide
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/python-porting-guide/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/python-porting-guide/</id>
             <content type="html">
                 &lt;h1 id=&quot;python-3-porting-guide&quot; tabindex=&quot;-1&quot;&gt;Python 3 Porting Guide&lt;/h1&gt;
 &lt;p&gt;Guide to porting Sugar Activities to Python 3.&lt;/p&gt;
@@ -913,15 +913,15 @@ guide for releasing a new version.&lt;/p&gt;
 &lt;p&gt;Check that you have changed &lt;code&gt;exec&lt;/code&gt; in &lt;code&gt;activity.info&lt;/code&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/python-porting-guide/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/python-porting-guide/" />
         </entry>
         <entry>
             <title>
                 python-coverage-guide
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/python-coverage-guide/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/python-coverage-guide/</id>
             <content type="html">
                 &lt;h1 id=&quot;measuring-coverage-of-python-activities&quot; tabindex=&quot;-1&quot;&gt;Measuring coverage of Python activities&lt;/h1&gt;
 &lt;ul&gt;
@@ -958,15 +958,15 @@ guide for releasing a new version.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;/usr/bin/sugar-activity3&lt;/code&gt; may be edited to add coverage API calls.  See &lt;a href=&quot;https://coverage.readthedocs.io/en/v4.5.x/api.html&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Coverage.py API&lt;/a&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/python-coverage-guide/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/python-coverage-guide/" />
         </entry>
         <entry>
             <title>
                 memory-leaks
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/memory-leaks/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/memory-leaks/</id>
             <content type="html">
                 &lt;h1 id=&quot;finding-memory-leaks&quot; tabindex=&quot;-1&quot;&gt;Finding Memory Leaks&lt;/h1&gt;
 &lt;p&gt;This is a guide to finding and fixing memory leaks.&lt;/p&gt;
@@ -1018,15 +1018,15 @@ plot &amp;quot;memory.log&amp;quot; using 1:2 title &amp;quot;run &lt;a class=&q
 That discussions is the source for this guide.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/memory-leaks/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/memory-leaks/" />
         </entry>
         <entry>
             <title>
                 languages
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/languages/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/languages/</id>
             <content type="html">
                 &lt;h1 id=&quot;sugar-labs-programming-languages&quot; tabindex=&quot;-1&quot;&gt;Sugar Labs Programming Languages&lt;/h1&gt;
 &lt;p&gt;At Sugar Labs we have opportunities for contributing with many&lt;br /&gt;
@@ -1084,15 +1084,15 @@ probably welcome.&lt;/li&gt;
 &lt;/ul&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/languages/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/languages/" />
         </entry>
         <entry>
             <title>
                 javascript-style
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/javascript-style/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/javascript-style/</id>
             <content type="html">
                 &lt;h1 id=&quot;code-style-for-sugar-java-script-development&quot; tabindex=&quot;-1&quot;&gt;Code style for Sugar JavaScript development&lt;/h1&gt;
 &lt;h2 id=&quot;general&quot; tabindex=&quot;-1&quot;&gt;General&lt;/h2&gt;
@@ -1139,15 +1139,15 @@ be safe if you are versioning it (we use git for Sugar Web).&lt;/p&gt;
 at &lt;a href=&quot;http://jsbeautifier.org/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;http://jsbeautifier.org/&lt;/a&gt; .&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/javascript-style/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/javascript-style/" />
         </entry>
         <entry>
             <title>
                 how-can-i-help
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/how-can-i-help/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/how-can-i-help/</id>
             <content type="html">
                 &lt;h1 id=&quot;how-can-i-help&quot; tabindex=&quot;-1&quot;&gt;How Can I Help?&lt;/h1&gt;
 &lt;h2 id=&quot;table-of-contents&quot; tabindex=&quot;-1&quot;&gt;Table Of Contents&lt;/h2&gt;
@@ -1299,29 +1299,29 @@ ways to get in touch with real people are:&lt;/p&gt;
 &lt;/ul&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/how-can-i-help/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/how-can-i-help/" />
         </entry>
         <entry>
             <title>
                 hig
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/hig/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/hig/</id>
             <content type="html">
                 &lt;h1 id=&quot;human-interface-guidelines&quot; tabindex=&quot;-1&quot;&gt;Human Interface Guidelines&lt;/h1&gt;
 &lt;p&gt;See &lt;a href=&quot;http://wiki.sugarlabs.org/go/Human_Interface_Guidelines&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Human Interface Guidelines&lt;/a&gt; on our Wiki.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/hig/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/hig/" />
         </entry>
         <entry>
             <title>
                 gtk3-porting-guide
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/gtk3-porting-guide/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/gtk3-porting-guide/</id>
             <content type="html">
                 &lt;h1 id=&quot;gtk-3-porting-guide&quot; tabindex=&quot;-1&quot;&gt;GTK 3 Porting Guide&lt;/h1&gt;
 &lt;p&gt;Guide to porting Sugar Activities to GTK 3.&lt;/p&gt;
@@ -2017,15 +2017,15 @@ self.get_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
 &lt;/ul&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/gtk3-porting-guide/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/gtk3-porting-guide/" />
         </entry>
         <entry>
             <title>
                 docs
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/docs/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/docs/</id>
             <content type="html">
                 &lt;h1 id=&quot;improving-this-documentation&quot; tabindex=&quot;-1&quot;&gt;Improving this documentation&lt;/h1&gt;
 &lt;p&gt;Have you found an error in these docs, or want to improve them?&lt;br /&gt;
@@ -2048,29 +2048,29 @@ screenshot layer.&lt;/p&gt;
 &lt;/ul&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/docs/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/docs/" />
         </entry>
         <entry>
             <title>
                 dev-environment
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/dev-environment/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/dev-environment/</id>
             <content type="html">
                 &lt;h1 id=&quot;setup-a-development-environment&quot; tabindex=&quot;-1&quot;&gt;Setup a development environment&lt;/h1&gt;
 &lt;p&gt;Moved to &lt;a href=&quot;https://github.com/sugarlabs/sugar/blob/master/docs/development-environment.md&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;docs/development-environment.md&lt;/a&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/dev-environment/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/dev-environment/" />
         </entry>
         <entry>
             <title>
                 desktop-activity
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/desktop-activity/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/desktop-activity/</id>
             <content type="html">
                 &lt;h1 id=&quot;write-your-own-sugar-desktop-activity&quot; tabindex=&quot;-1&quot;&gt;Write your own Sugar desktop activity&lt;/h1&gt;
 &lt;p&gt;Most Sugar desktop activities are written in Python, using our &lt;a href=&quot;https://github.com/sugarlabs/sugar-toolkit-gtk3&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Sugar&lt;br /&gt;
@@ -2272,15 +2272,15 @@ and &lt;a href=&quot;https://pypi.python.org/pypi/pyflakes&quot; target=&quot;_b
 &lt;/code&gt;&lt;/pre&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/desktop-activity/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/desktop-activity/" />
         </entry>
         <entry>
             <title>
                 contributing
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/contributing/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/contributing/</id>
             <content type="html">
                 &lt;h1 id=&quot;contributing&quot; tabindex=&quot;-1&quot;&gt;Contributing&lt;/h1&gt;
 &lt;p&gt;We use the pull-request model, see &lt;a href=&quot;https://help.github.com/articles/using-pull-requests&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;GitHub&#39;s help on pull-request&lt;/a&gt;.&lt;/p&gt;
@@ -2617,15 +2617,15 @@ and &lt;a href=&quot;http://lists.sugarlabs.org/archive/sugar-devel/2017-March/0
 reply&lt;/a&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/contributing/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/contributing/" />
         </entry>
         <entry>
             <title>
                 contact
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/contact/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/contact/</id>
             <content type="html">
                 &lt;h1 id=&quot;contact&quot; tabindex=&quot;-1&quot;&gt;Contact&lt;/h1&gt;
 &lt;p&gt;Join us at Sugar-devel mailing list&lt;br /&gt;
@@ -2641,15 +2641,15 @@ reply&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For Sugarizer specific discussions, join the &lt;a href=&quot;https://discord.gg/Djeqr8xAdM&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Discord server&lt;/a&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/contact/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/contact/" />
         </entry>
         <entry>
             <title>
                 code-of-conduct
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/code-of-conduct/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/code-of-conduct/</id>
             <content type="html">
                 &lt;h1 id=&quot;code-of-conduct&quot; tabindex=&quot;-1&quot;&gt;Code of Conduct&lt;/h1&gt;
 &lt;p&gt;To be effective, the members of the Sugar Labs community must work&lt;br /&gt;
@@ -2764,15 +2764,15 @@ please allow others to use your modifications and give credit to the&lt;br /&gt;
 Ubuntu Project!&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/code-of-conduct/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/code-of-conduct/" />
         </entry>
         <entry>
             <title>
                 android
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//src/android/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/src/android/</id>
             <content type="html">
                 &lt;h1 id=&quot;sugar-on-android&quot; tabindex=&quot;-1&quot;&gt;Sugar on Android&lt;/h1&gt;
 &lt;h2 id=&quot;web-activity-on-android&quot; tabindex=&quot;-1&quot;&gt;Web activity on Android&lt;/h2&gt;
@@ -2831,15 +2831,15 @@ Debugging on&lt;br /&gt;
 Android&lt;/a&gt;.&lt;/p&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//src/android/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/src/android/" />
         </entry>
         <entry>
             <title>
                 notes
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//index/</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/index/</id>
             <content type="html">
                 &lt;h1 id=&quot;page-moved&quot; tabindex=&quot;-1&quot;&gt;Page Moved&lt;/h1&gt;
 &lt;p&gt;We have moved this page to &lt;a href=&quot;https://github.com/sugarlabs/sugar-docs/blob/master/README.md&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
@@ -2848,15 +2848,15 @@ Android&lt;/a&gt;.&lt;/p&gt;
 &lt;!-- file to exist while developers.sugarlabs.org continues to be rendered from this repository --&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//index/" />
+            <link href="https://sugardocs.vercel.app//sugardocs/index/" />
         </entry>
         <entry>
             <title>
                 README
                 
             </title>
-            <updated>2025-02-27T13:14:42Z</updated>
-            <id>https://sugardocs.vercel.app//</id>
+            <updated>2025-03-04T14:47:17Z</updated>
+            <id>https://sugardocs.vercel.app//sugardocs/</id>
             <content type="html">
                 &lt;h1 id=&quot;sugar-labs&quot; tabindex=&quot;-1&quot;&gt;Sugar Labs&lt;/h1&gt;
 &lt;p&gt;Welcome to documentation for contributors and developers.&lt;/p&gt;
@@ -2907,6 +2907,6 @@ Android&lt;/a&gt;.&lt;/p&gt;
 &lt;/ul&gt;
 
             </content>
-            <link href="https://sugardocs.vercel.app//" />
+            <link href="https://sugardocs.vercel.app//sugardocs/" />
         </entry>
 </feed>
