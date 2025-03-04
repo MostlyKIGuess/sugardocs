@@ -8,6 +8,10 @@ const { parse } = require("node-html-parser");
 const htmlMinifier = require("html-minifier-terser");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const pathPrefix = isGitHubPages ? '/sugardocs/' : '/';
+
+
 const { headerToId, namedHeadingsFilter } = require("./src/helpers/utils");
 const {
   userMarkdownSetup,
@@ -562,6 +566,7 @@ module.exports = function (eleventyConfig) {
   userEleventySetup(eleventyConfig);
 
   return {
+    pathPrefix: pathPrefix,
     dir: {
       input: "src/site",
       output: "dist",
